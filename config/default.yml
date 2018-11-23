@@ -61,6 +61,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
+    - 'bin/**/*'
     - 'db/schema.rb'
   # Default formatter will be used if no `-f/--format` option is given.
   DefaultFormatter: progress
@@ -819,7 +820,7 @@ Layout/MultilineMethodCallBraceLayout:
                  a new line.
   Enabled: true
   VersionAdded: 0.49
-  EnforcedStyle: symmetrical
+  EnforcedStyle: new_line
   SupportedStyles:
     # symmetrical: closing brace is positioned in same way as opening brace
     # new_line: closing brace is always on a new line
@@ -1725,7 +1726,7 @@ Metrics/PerceivedComplexity:
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   StyleGuide: '#accessor_mutator_method_names'
-  Enabled: true
+  Enabled: false
   VersionAdded: 0.50
 
 Naming/AsciiIdentifiers:
@@ -3645,7 +3646,7 @@ Style/NumericPredicate:
   # of the variables which rubocop doesn't have.
   SafeAutoCorrect: false
   AutoCorrect: false
-  Enabled: true
+  Enabled: false
   VersionAdded: 0.42
   VersionChanged: 0.59
   EnforcedStyle: predicate
