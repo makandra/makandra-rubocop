@@ -32,6 +32,8 @@ Any per-project rules can then be defined in `.rubocop.yml`.
 
 Then run Rubocop via `bundle exec rubocop` from your project.
 
+For an initial run it might also useful to use the auto-correct option `bundle exec  rubocop --auto-correct` and carefully check in all the changes.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
