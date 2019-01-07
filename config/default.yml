@@ -3686,7 +3686,7 @@ Style/OptionalArguments:
                  Checks for optional arguments that do not appear at the end
                  of the argument list
   StyleGuide: '#optional-arguments'
-  Enabled: true
+  Enabled: false # We want to support helpers like link_to where the link text may be the first argument or be defined by a block
   VersionAdded: 0.33
 
 Style/OrAssignment:
@@ -4048,7 +4048,7 @@ Style/SymbolLiteral:
 
 Style/SymbolProc:
   Description: 'Use symbols as procs instead of blocks when possible.'
-  Enabled: true
+  Enabled: false # We can't enforce this because of "Can't create Binding from C level Proc" errors, and because it messes up arity checks.
   VersionAdded: 0.26
   VersionChanged: 0.40
   # A list of method names to be ignored by the check.
