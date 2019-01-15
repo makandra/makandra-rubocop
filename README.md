@@ -40,11 +40,18 @@ After checking out the repo, run `bin/setup` to install dependencies. You can al
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-When upgrading the Rubocop version being used:
+### Upgrading Rubocop version being used
 
-1. Get Rubocop's `default.yml`.
-2. Compare changes on Rubocop's side.
-3. Merge default configuration, but keep any custom configuration from this gem.
+1. Change `rubocop` dependency in gemspec to the release you want to upgrade to.
+2. `bundle`
+3. `git add remote rubocop https://github.com/rubocop-hq/rubocop.git`
+4. `git fetch rubocop --no-tags` (we can't import their tags or they would clash with ours)
+5. Find out the commit SHA of the release you put into the gemspec.
+6. `git checkout COMMIT_SHA config/default.yml`
+7. `git reset` to unstage the changes you just picked
+8. Review all changes and stage those that you want. Note that cop settings will be reverted to their default settings and that you do not want to add them all.
+9. Commit.
+
 
 ## Contributing
 
