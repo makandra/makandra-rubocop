@@ -30,9 +30,40 @@ inherit_gem:
 
 Any per-project rules can then be defined in `.rubocop.yml`.
 
-Then run Rubocop via `bundle exec rubocop` from your project.
+### Executing Rubocop on demand
 
-For an initial run it might also useful to use the auto-correct option `bundle exec  rubocop --auto-correct` and carefully check in all the changes.
+Run Rubocop via `bundle exec rubocop` from your project directory.
+
+For an initial run it might also useful to use the auto-correct option (`bundle exec  rubocop --auto-correct`) and carefully check in all changes.
+
+### Integrating Rubocop into your test suite
+
+We recommend you add an RSpec test that runs rubocop automatically and confirms that there are no offenses.
+This gem provides one. Simply add `spec/rubocop_spec.rb` to your project with the following code.
+
+```
+require 'makandra_rubocop/support/rubocop_spec'
+```
+
+### Configuring exceptions
+
+Some of our defaults might not fit your project. You can disable specific cops or add exclusions to `.rubocop.yml` in such cases. You basically have two options:
+
+- Disable cops for specific lines using [Ruby comments in your code](https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md#disabling-cops-within-source-code), like so:
+
+      for x in (0..19) # rubocop:disable Style/For
+
+- Disable entire files by [adding exclusions](https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md#cop-specific-include-and-exclude) to `.rubocop.yml`, like so:
+
+      Style/For:
+        Exclude:
+          - app/models/example.rb
+
+See [Rubocop's configuration manual](https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md) for more information.
+
+Note that disabling cops should be an exception for extremely rare cases where your code can not be aligned with Rubocop's requirements.
+If our defaults don't match your opinion, you should discuss with the team.
+
 
 ## Development
 
@@ -56,6 +87,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/makandra/makandra-rubocop.
+
+If you make any changes to this gem's Ruby code, make sure to run `rubocop`.
 
 ## License
 

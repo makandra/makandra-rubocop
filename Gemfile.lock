@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    makandra-rubocop (0.1.0)
+    makandra-rubocop (1.0.0)
       rubocop (~> 0.62.0)
 
 GEM
