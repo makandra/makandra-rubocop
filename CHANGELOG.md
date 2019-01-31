@@ -13,6 +13,20 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 -
 
+## 2.0.0 - 2019-01-31
+
+### Breaking changes
+
+- We updated the Cop `Layout/SpaceInsideHashLiteralBraces`. Braces used for hash literals now should have surrounding space:
+  ```
+  # bad
+  h = {a: 1, b: 2}
+
+  # good
+  h = { a: 1, b: 2 }
+  ```
+  Run `bundle exec rubocop --auto-correct` to upgrade your project.
+
 
 ## 1.0.0 - 2019-01-15
 
