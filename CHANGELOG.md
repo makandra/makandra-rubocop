@@ -11,7 +11,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
--
+- Disable `Style/MultilineBlockChain` for `spec/**/*`
+- Disable `Layout/ClosingParenthesisIndentation`
 
 ## 2.0.0 - 2019-01-31
 

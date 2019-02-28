@@ -394,7 +394,7 @@ Layout/ClosingHeredocIndentation:
 
 Layout/ClosingParenthesisIndentation:
   Description: 'Checks the indentation of hanging closing parentheses.'
-  Enabled: true
+  Enabled: false # See https://github.com/makandra/makandra-rubocop/issues/3 for more details
   VersionAdded: '0.49'
 
 Layout/CommentIndentation:
@@ -3505,6 +3505,8 @@ Style/MultilineBlockChain:
   StyleGuide: '#single-line-blocks'
   Enabled: true
   VersionAdded: '0.13'
+  Exclude:
+    - 'spec/**/*' # See https://github.com/makandra/makandra-rubocop/issues/5 for more details
 
 Style/MultilineIfModifier:
   Description: 'Only use if/unless modifiers on single line statements.'
