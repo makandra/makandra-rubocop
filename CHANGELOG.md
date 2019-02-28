@@ -7,12 +7,24 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
+-
+
+### Compatible changes
+
+-
+
+
+## 3.0.0 - 2019-02-28
+
+### Breaking changes
+
 - Upgrade Rubocop from 0.62.0 to [0.65.0](https://github.com/rubocop-hq/rubocop/blob/2e52af0e33cc6387f7c8495b52f66c8f2f46a804/CHANGELOG.md#0650-2019-02-19)
 
 ### Compatible changes
 
 - Disable `Style/MultilineBlockChain` for `spec/**/*`
 - Disable `Layout/ClosingParenthesisIndentation`
+
 
 ## 2.0.0 - 2019-01-31
 
