@@ -14,6 +14,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 -
 
 
+## 3.1.0 - 2019-02-29
+
+### Compatible changes
+
+- Disable `Layout/SpaceAfterColon` (#6)
+- Disable `Layout/RescueEnsureAlignment` (#7)
+
+
 ## 3.0.0 - 2019-02-28
 
 ### Breaking changes
