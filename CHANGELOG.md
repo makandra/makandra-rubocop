@@ -11,7 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
--
+- Exclude files in `tmp` and `public/system`.
 
 
 ## 3.1.0 - 2019-02-29
