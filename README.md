@@ -46,6 +46,7 @@ Any per-project rules can then be defined in `.rubocop.yml`.
 Run Rubocop via `bundle exec rubocop` from your project directory.
 
 For an initial run it might also useful to use the auto-correct option (`bundle exec  rubocop --auto-correct`) and carefully check in all changes.
+You can follow [this guide](https://makandracards.com/makandra/400093-adding-makandra-rubocop-to-an-existing-code-base) for bigger projects.
 
 ### Integrating Rubocop into your test suite
 
