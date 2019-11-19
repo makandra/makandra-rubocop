@@ -23,9 +23,20 @@ Or install it yourself as:
 
 Add `.rubocop.yml` to your project with the following contents:
 
+**For Ruby**
+
 ```yaml
 inherit_gem:
   makandra-rubocop: config/default.yml
+```
+
+**For Rails**
+
+```yaml
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+    - config/ext/rails.yml
 ```
 
 Any per-project rules can then be defined in `.rubocop.yml`.

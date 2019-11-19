@@ -7,7 +7,19 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
--
+- Upgrade to Rubocop 0.76.0
+- Drop support for Ruby < 2.3.0
+- Follow the new way to include the Rails extensions for Rubocop
+- Activate the Rails cops if required, they where disabled before by default
+
+In case you want to use the Rails cop, change your `.rubocop.yml` as follows:
+
+```
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+    - config/ext/rails.yml
+```
 
 ### Compatible changes
 
@@ -21,10 +33,6 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Update bundler to version 2 (only for development)
 
 ## 3.2.0 - 2019-07-29
-
-### Breaking changes
-
--
 
 ### Compatible changes
 
