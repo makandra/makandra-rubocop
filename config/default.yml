@@ -843,7 +843,7 @@ Layout/MultilineArrayLineBreaks:
   Description: >-
     Checks that each item in a multi-line array literal
     starts on a separate line.
-  Enabled: true
+  Enabled: false # As discussed in https://github.com/makandra/makandra-rubocop/issues/10
   VersionAdded: '0.67'
 
 Layout/MultilineAssignmentLayout:
