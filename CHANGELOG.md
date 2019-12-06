@@ -49,6 +49,10 @@ inherit_gem:
     - config/ext/rails.yml
 ```
 
+### Compatible changes
+
+- Use `Rspec.describe` instead of `describe` in the shared spec to support projects, that have the RSpec monkey patch disabled
+
 
 ## 3.2.1 - 2019-11-14
 
