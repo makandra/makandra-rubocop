@@ -2,17 +2,45 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-
 ## Unreleased
+
+### Breaking changes
+
+### Compatible changes
+
+
+## 4.0.0 - 2019-12-06
 
 ### Breaking changes
 
 - Upgrade to Rubocop 0.76.0
 - Drop support for Ruby < 2.3.0
-- Follow the new way to include the Rails extensions for Rubocop
-- Activate the Rails cops if required, they where disabled before by default
 
-In case you want to use the Rails cop, change your `.rubocop.yml` as follows:
+Rubopcop 0.72.0 extracts all its Rails helpers to a new gem. This results in two split config files in the
+`makandra-rubocop` gem:
+
+* config/default.yml (contains now only Ruby cops)
+* config/ext/rails.yml (contains all Rails cops)
+
+Enabling the Rails cops was and is optional in `makandra-rubocop`. In case you want to use the Ruby cops only, please
+use the following config as before:
+
+```
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+```
+
+In case you want to use the Ruby and the Rails cops:
+
+1\. Remove the following config (if present) from your `.rubocop.yml`:
+
+```
+Rails:
+  Enabled: true
+```
+
+2\. Change the beginning of your `.rubocop.yml`:
 
 ```
 inherit_gem:
@@ -20,10 +48,6 @@ inherit_gem:
     - config/default.yml
     - config/ext/rails.yml
 ```
-
-### Compatible changes
-
--
 
 
 ## 3.2.1 - 2019-11-14

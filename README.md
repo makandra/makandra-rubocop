@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-Add `.rubocop.yml` to your project with the following contents:
+Add a `.rubocop.yml` to your project with the following contents:
 
 **For Ruby**
 
@@ -39,7 +39,21 @@ inherit_gem:
     - config/ext/rails.yml
 ```
 
-Any per-project rules can then be defined in `.rubocop.yml`.
+Any per-project rules can then be defined in `.rubocop.yml`:
+
+```
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+    - config/ext/rails.yml
+
+AllCops:
+  Exclude:
+    - 'lib/assets/**/*'
+
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+```
 
 ### Executing Rubocop on demand
 
