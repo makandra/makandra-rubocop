@@ -39,9 +39,9 @@ inherit_gem:
     - config/ext/rails.yml
 ```
 
-Any per-project rules can then be defined in `.rubocop.yml`:
+Any per-project rules can then be defined in the `.rubocop.yml`:
 
-```
+```yaml
 inherit_gem:
   makandra-rubocop:
     - config/default.yml
