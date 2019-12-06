@@ -9,6 +9,12 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Compatible changes
 
 
+## 4.1.0 - 2019-12-06
+
+### Compatible changes
+
+- Disable Rails/UnknownEnv cop
+
 ## 4.0.0 - 2019-12-06
 
 ### Breaking changes
