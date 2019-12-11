@@ -55,6 +55,15 @@ Layout/MultilineArrayLineBreaks:
   Enabled: true
 ```
 
+It also might be desired to set `inherit_mode`, which specifies which configuration keys that have
+array values should be merged together instead of overriding the inherited value:
+
+```
+inherit_mode:
+  merge:
+    - Exclude
+```
+
 ### Executing Rubocop on demand
 
 Run Rubocop via `bundle exec rubocop` from your project directory.
