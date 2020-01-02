@@ -8,12 +8,15 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Disable `Rails/HelperInstanceVariable`
+
 
 ## 4.1.0 - 2019-12-06
 
 ### Compatible changes
 
 - Disable Rails/UnknownEnv cop
+
 
 ## 4.0.0 - 2019-12-06
 
@@ -65,6 +68,7 @@ inherit_gem:
 ### Compatible changes
 
 - Update bundler to version 2 (only for development)
+
 
 ## 3.2.0 - 2019-07-29
 

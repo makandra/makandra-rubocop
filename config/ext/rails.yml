@@ -230,7 +230,7 @@ Rails/HasManyOrHasOneDependent:
 
 Rails/HelperInstanceVariable:
   Description: 'Do not use instance variables in helpers'
-  Enabled: true
+  Enabled: false # https://github.com/makandra/makandra-rubocop/issues/12
   VersionAdded: '2.0'
   Include:
     - app/helpers/**/*.rb
