@@ -8,8 +8,16 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+
+## 4.2.0 - 2020-01-02
+
+### Breaking changes
+
+### Compatible changes
+
 - Disable `Rails/HelperInstanceVariable`
 - Disable `Rails/HasManyOrHasOneDependent`
+
 
 ## 4.1.0 - 2019-12-06
 
