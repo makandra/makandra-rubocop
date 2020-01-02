@@ -223,7 +223,7 @@ Rails/HasAndBelongsToMany:
 Rails/HasManyOrHasOneDependent:
   Description: 'Define the dependent option to the has_many and has_one associations.'
   StyleGuide: 'https://rails.rubystyle.guide#has_many-has_one-dependent-option'
-  Enabled: true
+  Enabled: false # https://github.com/makandra/makandra-rubocop/issues/13
   VersionAdded: '0.50'
   Include:
     - app/models/**/*.rb

@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Compatible changes
 
 - Disable `Rails/HelperInstanceVariable`
-
+- Disable `Rails/HasManyOrHasOneDependent`
 
 ## 4.1.0 - 2019-12-06
 
@@ -28,8 +28,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 Rubopcop 0.72.0 extracts all its Rails helpers to a new gem. This results in two split config files in the
 `makandra-rubocop` gem:
 
-* config/default.yml (contains now only Ruby cops)
-* config/ext/rails.yml (contains all Rails cops)
+- config/default.yml (contains now only Ruby cops)
+- config/ext/rails.yml (contains all Rails cops)
 
 Enabling the Rails cops was and is optional in `makandra-rubocop`. In case you want to use the Ruby cops only, please
 use the following config as before:
