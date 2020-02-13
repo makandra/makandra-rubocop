@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Temporary disable `Layout/RescueEnsureAlignment` again, rubocop-hq/rubocop#6771 seems not to have fixed the issue
+  in our 4.0.0 release.
 
 ## 4.2.0 - 2020-01-02
 

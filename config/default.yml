@@ -966,7 +966,7 @@ Layout/MultilineOperationIndentation:
 
 Layout/RescueEnsureAlignment:
   Description: 'Align rescues and ensures correctly.'
-  Enabled: true
+  Enabled: false # Temporary disable this cop again #16, rubocop-hq/rubocop#6771 seems not have fixed the issue
   VersionAdded: '0.49'
 
 Layout/SpaceAfterColon:
