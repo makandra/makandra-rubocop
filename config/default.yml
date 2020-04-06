@@ -2039,7 +2039,7 @@ Naming/PredicateName:
 
 Naming/RescuedExceptionsVariableName:
   Description: 'Use consistent rescued exceptions variables naming.'
-  Enabled: true
+  Enabled: false # We want to be more flexible with the exception name #19
   VersionAdded: '0.67'
   VersionChanged: '0.68'
   PreferredName: e
