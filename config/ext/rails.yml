@@ -1,6 +1,10 @@
 require:
   - rubocop-rails
 
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   Exclude:
     - 'node_modules/**/*'
@@ -56,15 +60,33 @@ Rails/ActiveSupportAliases:
   Enabled: false
   VersionAdded: '0.48'
 
+Rails/ApplicationController:
+  Description: 'Check that controllers subclass ApplicationController.'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.4'
+  VersionChanged: '2.5'
+
 Rails/ApplicationJob:
   Description: 'Check that jobs subclass ApplicationJob.'
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.49'
+  VersionChanged: '2.5'
+
+Rails/ApplicationMailer:
+  Description: 'Check that mailers subclass ApplicationMailer.'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.4'
+  VersionChanged: '2.5'
 
 Rails/ApplicationRecord:
   Description: 'Check that models subclass ApplicationRecord.'
   Enabled: false # Because not all models are necessarily domain models (e.g. migration models for legacy databases)
+  SafeAutoCorrect: false
   VersionAdded: '0.49'
+  VersionChanged: '2.5'
 
 Rails/AssertNot:
   Description: 'Use `assert_not` instead of `assert !`.'
@@ -190,8 +212,8 @@ Rails/FilePath:
   Description: 'Use `Rails.root.join` for file path joining.'
   Enabled: false
   VersionAdded: '0.47'
-  VersionChanged: '0.57'
-  EnforcedStyle: arguments
+  VersionChanged: '2.4'
+  EnforcedStyle: slashes
   SupportedStyles:
     - slashes
     - arguments
@@ -259,6 +281,16 @@ Rails/IgnoredSkipActionFilterOption:
   VersionAdded: '0.63'
   Include:
     - app/controllers/**/*.rb
+
+Rails/IndexBy:
+  Description: 'Prefer `index_by` over `each_with_object` or `map`.'
+  Enabled: true
+  VersionAdded: '2.5'
+
+Rails/IndexWith:
+  Description: 'Prefer `index_with` over `each_with_object` or `map`.'
+  Enabled: true
+  VersionAdded: '2.5'
 
 Rails/InverseOf:
   Description: 'Checks for associations where the inverse cannot be determined automatically.'
@@ -330,6 +362,17 @@ Rails/Present:
   # Convert usages of `unless blank?` to `if present?`
   UnlessBlank: true
 
+Rails/RakeEnvironment:
+  Description: 'Include `:environment` as a dependency for all Rake tasks.'
+  Enabled: true
+  Safe: false
+  VersionAdded: '2.4'
+  Include:
+    - '**/Rakefile'
+    - '**/*.rake'
+  Exclude:
+    - 'lib/capistrano/tasks/**/*.rake'
+
 Rails/ReadWriteAttribute:
   Description: >-
     Checks for read_attribute(:attr) and
@@ -364,6 +407,10 @@ Rails/RefuteMethods:
   Description: 'Use `assert_not` methods instead of `refute` methods.'
   Enabled: true
   VersionAdded: '0.56'
+  EnforcedStyle: assert_not
+  SupportedStyles:
+    - assert_not
+    - refute
   Include:
     - '**/test/**/*'
 
@@ -401,6 +448,18 @@ Rails/SafeNavigation:
   # both raise a `NoMethodError` if the receiver of the method call does not
   # implement the intended method. `try` will not raise an exception for this.
   ConvertTry: false
+
+Rails/SafeNavigationWithBlank:
+  Description: 'Avoid `foo&.blank?` in conditionals.'
+  Enabled: true
+  VersionAdded: '2.4'
+  # While the safe navigation operator is generally a good idea, when
+  # checking `foo&.blank?` in a conditional, `foo` being `nil` will actually
+  # do the opposite of what the author intends.
+  #
+  # foo&.blank? #=> nil
+  # foo.blank? #=> true
+  SafeAutoCorrect: false
 
 Rails/SaveBang:
   Description: 'Identifies possible cases where Active Record save! or related should be used.'
@@ -466,6 +525,13 @@ Rails/UniqBeforePluck:
     - conservative
     - aggressive
   AutoCorrect: false
+
+Rails/UniqueValidationWithoutIndex:
+  Description: 'Uniqueness validation should be with a unique index.'
+  Enabled: true
+  VersionAdded: '2.5'
+  Include:
+    - app/models/**/*.rb
 
 Rails/UnknownEnv:
   Description: 'Use correct environment name.'
