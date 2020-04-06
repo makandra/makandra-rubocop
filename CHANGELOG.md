@@ -8,8 +8,16 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+
+## 4.4.0 - 2020-04-06
+
+### Breaking changes
+
+### Compatible changes
+
 - Disable `Lint/EmptyWhen` (#18)
 - Disable `Naming/RescuedExceptionsVariableName` (#19)
+
 
 ## 4.3.0 - 2020-02-13
 
