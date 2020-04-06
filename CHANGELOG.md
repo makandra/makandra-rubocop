@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Disable `Lint/EmptyWhen` (#18)
 
 ## 4.3.0 - 2020-02-13
 

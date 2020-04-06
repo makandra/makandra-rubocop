@@ -1334,7 +1334,7 @@ Lint/EmptyInterpolation:
 
 Lint/EmptyWhen:
   Description: 'Checks for `when` branches with empty bodies.'
-  Enabled: true
+  Enabled: false # We want to write comments in when branches without any return value https://github.com/makandra/makandra-rubocop/issues/18
   VersionAdded: '0.45'
 
 Lint/EndInMethod:
