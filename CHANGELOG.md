@@ -6,6 +6,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
+### Compatible changes
+
+
+## 5.0.0 - 2020-04-07
+
+### Breaking changes
+
 - Upgrade `rubocop`
 - Upgrade `rubocop-rails`
 
@@ -20,8 +27,6 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enable: false # Disabled until Ruby 2.5 upgrade
 ```
-
-### Compatible changes
 
 
 ## 4.4.0 - 2020-04-06
