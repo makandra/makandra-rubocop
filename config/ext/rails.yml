@@ -62,7 +62,7 @@ Rails/ActiveSupportAliases:
 
 Rails/ApplicationController:
   Description: 'Check that controllers subclass ApplicationController.'
-  Enabled: true
+  Enabled: false # We have Controllers like `/jasmine` which do not inherit from ApplicationController
   SafeAutoCorrect: false
   VersionAdded: '2.4'
   VersionChanged: '2.5'
@@ -364,7 +364,7 @@ Rails/Present:
 
 Rails/RakeEnvironment:
   Description: 'Include `:environment` as a dependency for all Rake tasks.'
-  Enabled: true
+  Enabled: false
   Safe: false
   VersionAdded: '2.4'
   Include:

@@ -6,7 +6,20 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
-### Compatible changes
+- Upgrade `rubocop`
+- Upgrade `rubocop-rails`
+
+Migration notes:
+
+In case you are using a project with Ruby < 2.5 you need to add these lines to your `.rubocop.yml`:
+
+```
+Style/HashTransformKeys:
+  Enable: false # Disabled until Ruby 2.5 upgrade
+
+Style/HashTransformValues:
+  Enable: false # Disabled until Ruby 2.5 upgrade
+```
 
 
 ## 4.4.0 - 2020-04-06

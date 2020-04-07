@@ -564,7 +564,7 @@ Layout/FirstArgumentIndentation:
   Enabled: true
   VersionAdded: '0.68'
   VersionChanged: '0.77'
-  EnforcedStyle: special_for_inner_method_call_in_parentheses
+  EnforcedStyle: consistent
   SupportedStyles:
     # The first parameter should always be indented one step more than the
     # preceding line.
@@ -1722,7 +1722,7 @@ Lint/StructNewOverride:
 Lint/SuppressedException:
   Description: "Don't suppress exceptions."
   StyleGuide: '#dont-hide-exceptions'
-  Enabled: false
+  Enabled: true
   AllowComments: true
   VersionAdded: '0.9'
   VersionChanged: '0.81'
@@ -1952,7 +1952,7 @@ Naming/BlockParameterName:
   Description: >-
                  Checks for block parameter names that contain capital letters,
                  end in numbers, or do not meet a minimal length.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
   VersionChanged: '0.77'
   # Parameter names may be equal to or greater than this value
@@ -2090,11 +2090,11 @@ Naming/MethodParameterName:
   Description: >-
                  Checks for method parameter names that contain capital letters,
                  end in numbers, or do not meet a minimal length.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.53'
   VersionChanged: '0.77'
   # Parameter names may be equal to or greater than this value
-  MinNameLength: 3
+  MinNameLength: 1
   AllowNamesEndingInNumbers: true
   # Allowed names that will not register an offense
   AllowedNames:
@@ -3864,7 +3864,7 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInBlockArgs:
   Description: 'Checks for useless trailing commas in block arguments.'
-  Enabled: false
+  Enabled: false # We want to enabled this cop later, currently it is not working properly
   Safe: false
   VersionAdded: '0.81'
 
