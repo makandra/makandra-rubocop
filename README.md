@@ -99,7 +99,6 @@ See [Rubocop's configuration manual](https://github.com/rubocop-hq/rubocop/blob/
 Note that disabling cops should be an exception for extremely rare cases where your code can not be aligned with Rubocop's requirements.
 If our defaults don't match your opinion, you should discuss with the team.
 
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -112,12 +111,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 2. `bundle`
 3. `git add remote rubocop https://github.com/rubocop-hq/rubocop.git`
 4. `git fetch rubocop --no-tags` (we can't import their tags or they would clash with ours)
-5. Find out the commit SHA of the release you put into the gemspec.
-6. `git checkout COMMIT_SHA config/default.yml`
-7. `git reset` to unstage the changes you just picked
-8. Review all changes and stage those that you want. Note that cop settings will be reverted to their default settings and that you do not want to add them all.
-9. Commit.
+5. Find out the commit SHA of the release you put into the gemspec and the commit SHA of the newest release (with a tag).
+6. `git diff $OLDER_SHA $NEWER_SHA config/default.yml | git apply --3way`
+7. Resolve the merge conflicts carefully and review all changes. We do not want to loose our overrides.
+8. Commit.
 
+This procedure is the same for `rubocop-rails`.
 
 ## Contributing
 
