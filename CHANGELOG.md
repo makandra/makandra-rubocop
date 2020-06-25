@@ -8,6 +8,16 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Added [rubocop-rspec](https://github.com/rubocop-hq/rubocop-rspec)
+  
+  You can add it to a project like this:
+  
+  ```yaml
+  inherit_gem:
+    makandra-rubocop:
+      - config/default.yml
+      - config/ext/rspec.yml
+  ```
 
 ## 5.0.0 - 2020-04-07
 

@@ -39,6 +39,15 @@ inherit_gem:
     - config/ext/rails.yml
 ```
 
+**For RSpec**
+
+```yaml
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+    - config/ext/rspec.yml
+```
+
 Any per-project rules can then be defined in the `.rubocop.yml`:
 
 ```yaml

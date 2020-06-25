@@ -30,7 +30,7 @@ RSpec/AlignRightLetBrace:
 
 RSpec/AnyInstance:
   Description: Check that instances are not being stubbed globally.
-  Enabled: true
+  Enabled: false # The example is good, but it does not work if you can not access the instance that needs to be stubbed
   VersionAdded: '1.4'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/AnyInstance
 
@@ -70,7 +70,7 @@ RSpec/ContextMethod:
 
 RSpec/ContextWording:
   Description: Checks that `context` docstring starts with an allowed prefix.
-  Enabled: true
+  Enabled: false # It is nice to follow this approach but we do not want to enforce it
   Prefixes:
     - when
     - with
@@ -81,7 +81,7 @@ RSpec/ContextWording:
 
 RSpec/DescribeClass:
   Description: Check that the first argument to the top level describe is a constant.
-  Enabled: true
+  Enabled: false  # It is nice to follow this approach but we do not want to enforce it
   VersionAdded: '1.0'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DescribeClass
 
@@ -169,7 +169,7 @@ RSpec/EmptyLineAfterSubject:
 
 RSpec/ExampleLength:
   Description: Checks for long examples.
-  Enabled: true
+  Enabled: false # We do not want to have such limitation
   Max: 5
   VersionAdded: '1.5'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExampleLength
@@ -218,7 +218,7 @@ RSpec/ExpectChange:
 
 RSpec/ExpectInHook:
   Description: Do not use `expect` in hooks such as `before`.
-  Enabled: true
+  Enabled: false # Maybe we want to change this in the future, currently we use this if a expectation is the same for multiple examples (e.g the response of a http response)
   VersionAdded: '1.16'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExpectInHook
 
@@ -281,7 +281,7 @@ RSpec/ImplicitExpect:
 
 RSpec/ImplicitSubject:
   Description: Checks for usage of implicit subject (`is_expected` / `should`).
-  Enabled: true
+  Enabled: true # Maybe we want to change this to false in the future
   EnforcedStyle: single_line_only
   SupportedStyles:
     - single_line_only
@@ -299,7 +299,7 @@ RSpec/InstanceSpy:
 
 RSpec/InstanceVariable:
   Description: Checks for instance variable usage in specs.
-  Enabled: true
+  Enabled: false # It's good to prefer let over an instance variable. But there are legit cases for instance variables.
   AssignmentOnly: false
   VersionAdded: '1.0'
   VersionChanged: '1.7'
@@ -329,7 +329,7 @@ RSpec/IteratedExpectation:
 
 RSpec/LeadingSubject:
   Description: Enforce that subject is the first definition in the test.
-  Enabled: true
+  Enabled: false # We don't do this
   VersionAdded: '1.7'
   VersionChanged: '1.14'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/LeadingSubject
@@ -373,7 +373,7 @@ RSpec/MessageExpectation:
 RSpec/MessageSpies:
   Description: Checks that message expectations are set using spies.
   Enabled: true
-  EnforcedStyle: have_received
+  EnforcedStyle: receive # We usually use receive as it is defined before the expectation line and not after
   SupportedStyles:
     - have_received
     - receive
@@ -394,7 +394,7 @@ RSpec/MultipleDescribes:
 
 RSpec/MultipleExpectations:
   Description: Checks if examples contain too many `expect` calls.
-  Enabled: true
+  Enabled: false # We do not want to have such limitation
   Max: 1
   VersionAdded: '1.7'
   VersionChanged: '1.21'
@@ -408,14 +408,14 @@ RSpec/MultipleSubjects:
 
 RSpec/NamedSubject:
   Description: Checks for explicitly referenced test subjects.
-  Enabled: true
+  Enabled: true # Usually this is a good pattern, but maybe we have to disable this in the future
   IgnoreSharedExamples: true
   VersionAdded: 1.5.3
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/NamedSubject
 
 RSpec/NestedGroups:
   Description: Checks for nested example groups.
-  Enabled: true
+  Enabled: false # We do not want to have such limitation
   Max: 3
   VersionAdded: '1.7'
   VersionChanged: '1.10'
@@ -433,7 +433,7 @@ RSpec/NotToNot:
 
 RSpec/OverwritingSetup:
   Description: Checks if there is a let/subject that overwrites an existing one.
-  Enabled: true
+  Enabled: true # This would break tests, but it's worth the effort
   VersionAdded: '1.14'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/OverwritingSetup
 
@@ -445,7 +445,7 @@ RSpec/Pending:
 
 RSpec/PredicateMatcher:
   Description: Prefer using predicate matcher over using predicate method directly.
-  Enabled: true
+  Enabled: true # Maybe we need to remove this in the future
   Strict: true
   EnforcedStyle: inflected
   AllowedExplicitMatchers: []
@@ -632,7 +632,7 @@ FactoryBot/FactoryClassName:
 
 Rails/HttpStatus:
   Description: Enforces use of symbolic or numeric value to describe HTTP status.
-  Enabled: true
+  Enabled: false # This should not be enforced
   EnforcedStyle: symbolic
   SupportedStyles:
     - numeric
