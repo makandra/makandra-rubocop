@@ -8,7 +8,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
-- Added [rubocop-rspec](https://github.com/rubocop-hq/rubocop-rspec)
+
+## 5.1.0 - 2020-06-29
+
+### Breaking changes
+
+### Compatible changes
+
+- Add [rubocop-rspec](https://github.com/rubocop-hq/rubocop-rspec)
   
   You can add it to a project like this:
   
@@ -18,7 +25,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
       - config/default.yml
       - config/ext/rspec.yml
   ```
-- Disabled the `Style/ClassCheck` cop (#22)
+- Disable the `Style/ClassCheck` cop (#22)
+
 
 ## 5.0.0 - 2020-04-07
 
