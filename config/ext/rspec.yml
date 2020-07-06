@@ -349,7 +349,7 @@ RSpec/LetBeforeExamples:
 
 RSpec/LetSetup:
   Description: Checks unreferenced `let!` calls being used for test setup.
-  Enabled: true
+  Enabled: false # It seems better to remove this cop from the default set, the reasons are weird https://github.com/rubocop-hq/rubocop-rspec/issues/94
   VersionAdded: '1.7'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/LetSetup
 
