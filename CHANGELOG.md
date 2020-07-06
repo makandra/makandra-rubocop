@@ -8,6 +8,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+
+## 5.2.0 - 2020-07-06
+
+### Breaking changes
+
+### Compatible changes
+
 - Disable `RSpec/LetSetup`
 
 
