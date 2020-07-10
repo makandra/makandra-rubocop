@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Disable `RSpec/NamedSubject`
+
 
 ## 5.2.0 - 2020-07-06
 

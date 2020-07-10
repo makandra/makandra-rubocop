@@ -408,7 +408,7 @@ RSpec/MultipleSubjects:
 
 RSpec/NamedSubject:
   Description: Checks for explicitly referenced test subjects.
-  Enabled: true # Usually this is a good pattern, but maybe we have to disable this in the future
+  Enabled: false # https://github.com/makandra/makandra-rubocop/issues/23 - good default but not enforced
   IgnoreSharedExamples: true
   VersionAdded: 1.5.3
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/NamedSubject
