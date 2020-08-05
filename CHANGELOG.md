@@ -8,6 +8,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+
+## 5.4.0 - 2020-08-05
+
+### Breaking changes
+
+### Compatible changes
+
 - Disable `RSpec/SubjectStub`
 
 
