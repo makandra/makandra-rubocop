@@ -537,7 +537,7 @@ RSpec/SingleArgumentMessageChain:
 
 RSpec/SubjectStub:
   Description: Checks for stubbed test subjects.
-  Enabled: true
+  Enabled: false #https://github.com/makandra/makandra-rubocop/issues/24
   VersionAdded: '1.7'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/SubjectStub
 
