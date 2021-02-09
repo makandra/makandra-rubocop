@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Upgrade `rubocop` from version `0.81.0` to `1.9.1`
   - Re-enable `Layout/RescueEnsureAlignment` as the bug seems to be fixed in `1.9.1`
   - Add most of the new cops from `1.9.1`
+- Upgrade `rubocop-rails` from version `2.5.1` to `2.9.1`
 
 ### Compatible changes
 
