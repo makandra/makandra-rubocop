@@ -13,11 +13,15 @@ gem 'makandra-rubocop'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install makandra-rubocop
+```
+$ gem install makandra-rubocop
+```
 
 ## Usage
 
@@ -67,7 +71,7 @@ Layout/MultilineArrayLineBreaks:
 It also might be desired to set `inherit_mode`, which specifies which configuration keys that have
 array values should be merged together instead of overriding the inherited value:
 
-```
+```yaml
 inherit_mode:
   merge:
     - Exclude
@@ -85,7 +89,7 @@ You can follow [this guide](https://makandracards.com/makandra/400093-adding-mak
 We recommend you add an RSpec test that runs rubocop automatically and confirms that there are no offenses.
 This gem provides one. Simply add `spec/rubocop_spec.rb` to your project with the following code.
 
-```
+```ruby
 require 'makandra_rubocop/support/rubocop_spec'
 ```
 
@@ -95,13 +99,17 @@ Some of our defaults might not fit your project. You can disable specific cops o
 
 - Disable cops for specific lines using [Ruby comments in your code](https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md#disabling-cops-within-source-code), like so:
 
-      for x in (0..19) # rubocop:disable Style/For
+```ruby
+for x in (0..19) # rubocop:disable Style/For
+```
 
 - Disable entire files by [adding exclusions](https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md#cop-specific-include-and-exclude) to `.rubocop.yml`, like so:
 
-      Style/For:
-        Exclude:
-          - app/models/example.rb
+```yaml
+Style/For:
+  Exclude:
+    - app/models/example.rb
+```
 
 See [Rubocop's configuration manual](https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md) for more information.
 
