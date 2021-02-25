@@ -6,13 +6,18 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
+### Compatible changes
+
+
+## 6.0.0 - 2021-02-25
+
+### Breaking changes
+
 - Upgrade `rubocop` from version `0.81.0` to `1.9.1`
   - Re-enable `Layout/RescueEnsureAlignment` as the bug seems to be fixed in `1.9.1`
   - Add most of the new cops from `1.9.1`
 - Upgrade `rubocop-rails` from version `2.5.1` to `2.9.1`
 - Upgrade `rubocop-rspec` from version `2.2.0` to `1.40.0`
-
-### Compatible changes
 
 
 ## 5.4.0 - 2020-08-05
