@@ -2658,7 +2658,7 @@ Style/AccessModifierDeclarations:
 
 Style/AccessorGrouping:
   Description: 'Checks for grouping of accessors in `class` and `module` bodies.'
-  Enabled: true
+  Enabled: false # Was voted against, see https://github.com/makandra/makandra-rubocop/issues/27
   VersionAdded: '0.87'
   EnforcedStyle: grouped
   SupportedStyles:

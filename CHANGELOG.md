@@ -9,6 +9,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Compatible changes
 
 
+## 6.1.0 - 2021-04-30
+
+### Compatible changes
+
+- Disable `Style/AccessorGrouping`
+
+
 ## 6.0.0 - 2021-02-25
 
 ### Breaking changes
