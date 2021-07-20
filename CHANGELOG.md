@@ -8,6 +8,46 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Use the format `simple` output, and not `progress`.
+- Also output stdout if stderr is present. Otherwise warnings like
+whitequark/parser will block the actual offenses message to be skipped.
+Originally we thought the only stderr message will be a failure of
+rubocop itself, so there would be never a stdout, too.
+
+  **Before**:
+
+  ```
+  1) rubocop has no offenses
+    Failure/Error: example.run
+
+    warning: parser/current is loading parser/ruby26, which recognizes
+    warning: 2.6.7-compliant syntax, but you are running 2.6.5.
+    warning: please see https://github.com/whitequark/parser#compatibility-with-ruby-mri.
+    # ./spec/support/with_power.rb:11:in `block (2 levels) in <top (required)>'
+    # ./spec/support/vcr.rb:16:in `block (2 levels) in <top (required)>'
+    # ./spec/support/database_cleaner.rb:21:in `block (2 levels) in <top (required)>'
+  ```
+
+  **After:**
+
+  ```
+  1) rubocop has no offenses
+    Failure/Error: example.run
+
+    warning: parser/current is loading parser/ruby26, which recognizes
+    warning: 2.6.7-compliant syntax, but you are running 2.6.5.
+    warning: please see https://github.com/whitequark/parser#compatibility-with-ruby-mri.
+
+    == app/user/search.rb ==
+    C:  5:  3: [Correctable] Layout/IndentationWidth: Use 2 (not 5) spaces for indentation.
+
+    1016 files inspected, 1 offense detected, 1 offense auto-correctable
+    # ./spec/support/with_power.rb:11:in `block (2 levels) in <main>'
+    # ./spec/support/vcr.rb:16:in `block (2 levels) in <main>'
+    # ./spec/support/database_cleaner.rb:21:in `block (2 levels) in <main>'
+  ```
+
+
 
 ## 6.1.0 - 2021-04-30
 
