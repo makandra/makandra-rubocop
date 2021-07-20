@@ -8,6 +8,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+## 6.2.0 - 2021-06-20
+
+### Compatible changes
+
 - Use the format `simple` output, and not `progress`.
 - Also output stdout if stderr is present. Otherwise warnings like
 whitequark/parser will block the actual offenses message to be skipped.
