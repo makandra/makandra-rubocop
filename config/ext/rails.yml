@@ -23,6 +23,27 @@ AllCops:
   # as the default.
   TargetRailsVersion: ~
 
+Lint/NumberConversion:
+  # Add Rails' duration methods to the ignore list for `Lint/NumberConversion`
+  # so that calling `to_i` on one of these does not register an offense.
+  # See: https://github.com/rubocop/rubocop/issues/8950
+  IgnoredMethods:
+    - ago
+    - from_now
+    - second
+    - seconds
+    - minute
+    - minutes
+    - hour
+    - hours
+    - day
+    - days
+    - week
+    - weeks
+    - fortnight
+    - fortnights
+    - in_milliseconds
+
 Rails/ActionFilter:
   Description: 'Enforces consistent use of action filter methods.'
   Enabled: true
@@ -67,6 +88,16 @@ Rails/ActiveSupportAliases:
     `Array#append`, `Array#prepend`.
   Enabled: false
   VersionAdded: '0.48'
+
+Rails/AddColumnIndex:
+  Description: >-
+    Rails migrations don't make use of a given `index` key, but also
+    doesn't given an error when it's used, so it makes it seem like an
+    index might be used.
+  Enabled: true
+  VersionAdded: '2.11'
+  Include:
+    - db/migrate/*.rb
 
 Rails/AfterCommitOverride:
   Description: >-
@@ -134,8 +165,9 @@ Rails/BelongsTo:
 Rails/Blank:
   Description: 'Enforces use of `blank?`.'
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '0.48'
-  VersionChanged: '0.67'
+  VersionChanged: '2.10'
   # Convert usages of `nil? || empty?` to `blank?`
   NilOrEmpty: true
   # Convert usages of `!present?` to `blank?`
@@ -159,7 +191,7 @@ Rails/ContentTag:
   Reference:
     - 'https://github.com/rails/rails/issues/25195'
     - 'https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag'
-  Enabled: false # The Github page returned an 500 so I was not able to evaluate this cop
+  Enabled: false # We currently use content_tag in many applications. If content_tag should become deprecated in the future we'll have to change it anyway, but until then, we'll keep the content_tag syntax
   VersionAdded: '2.6'
 
 Rails/CreateTableWithTimestamps:
@@ -177,7 +209,7 @@ Rails/Date:
     such as Date.today, Date.current etc.
   Enabled: false # It's not that simple. Really.
   VersionAdded: '0.30'
-  VersionChanged: '0.33'
+  VersionChanged: '2.11'
   # The value `strict` disallows usage of `Date.today`, `Date.current`,
   # `Date#to_time` etc.
   # The value `flexible` allows usage of `Date.current`, `Date.yesterday`, etc
@@ -187,6 +219,8 @@ Rails/Date:
   SupportedStyles:
     - strict
     - flexible
+  AllowToTime: false # datetime.to_time can handle timezones, but this depends on a setting, which one may not be
+    # aware of, see https://api.rubyonrails.org/classes/DateTime.html#method-i-to_time,
 
 Rails/DefaultScope:
   Description: 'Avoid use of `default_scope`.'
@@ -214,7 +248,7 @@ Rails/DynamicFindBy:
   StyleGuide: 'https://rails.rubystyle.guide#find_by'
   Enabled: false # We occasionally define custom find_by_* methods (e.g. `find_by_anything`) which don't work like ActiveRecord's methods.
   VersionAdded: '0.44'
-  VersionChanged: '2.6'
+  VersionChanged: '2.10'
   # The `Whitelist` has been deprecated, Please use `AllowedMethods` instead.
   Whitelist:
     - find_by_sql
@@ -222,6 +256,12 @@ Rails/DynamicFindBy:
     - find_by_sql
   AllowedReceivers:
     - Gem::Specification
+
+Rails/EagerEvaluationLogMessage:
+  Description: 'Checks that blocks are used for interpolated strings passed to `Rails.logger.debug`.'
+  Reference: 'https://guides.rubyonrails.org/debugging_rails_applications.html#impact-of-logs-on-performance'
+  Enabled: true
+  VersionAdded: '2.11'
 
 Rails/EnumHash:
   Description: 'Prefer hash syntax over array syntax when defining enums.'
@@ -243,6 +283,19 @@ Rails/EnvironmentComparison:
   Enabled: true
   VersionAdded: '0.52'
 
+Rails/EnvironmentVariableAccess:
+  Description: 'Do not access `ENV` directly after initialization.'
+  Enabled: false
+  VersionAdded: '2.10'
+  VersionChanged: '2.11'
+  Include:
+    - app/**/*.rb
+    - lib/**/*.rb
+  Exclude:
+    - lib/**/*.rake
+  AllowReads: false
+  AllowWrites: false
+
 Rails/Exit:
   Description: >-
     Favor `fail`, `break`, `return`, etc. over `exit` in
@@ -256,6 +309,11 @@ Rails/Exit:
     - lib/**/*.rb
   Exclude:
     - lib/**/*.rake
+
+Rails/ExpandedDateRange:
+  Description: 'Checks for expanded date range.'
+  Enabled: false # We think the range syntax is clearer than using #all_year for example
+  VersionAdded: '2.11'
 
 Rails/FilePath:
   Description: 'Use `Rails.root.join` for file path joining.'
@@ -272,6 +330,8 @@ Rails/FindBy:
   StyleGuide: 'https://rails.rubystyle.guide#find_by'
   Enabled: false
   VersionAdded: '0.30'
+  VersionChanged: '2.11'
+  IgnoreWhereFirst: true
   Include:
     - app/models/**/*.rb
 
@@ -333,10 +393,19 @@ Rails/HttpStatus:
   Description: 'Enforces use of symbolic or numeric value to define HTTP status.'
   Enabled: false
   VersionAdded: '0.54'
+  VersionChanged: '2.11'
   EnforcedStyle: symbolic
   SupportedStyles:
     - numeric
     - symbolic
+
+Rails/I18nLocaleAssignment:
+  Description: 'Prefer the usage of `I18n.with_locale` instead of manually updating `I18n.locale` value.'
+  Enabled: false
+  VersionAdded: '2.11'
+  Include:
+    - spec/**/*.rb
+    - test/**/*.rb
 
 Rails/IgnoredSkipActionFilterOption:
   Description: 'Checks that `if` and `only` (or `except`) are not used together as options of `skip_*` action filter.'
@@ -546,7 +615,9 @@ Rails/RedundantReceiverInWithOptions:
 Rails/ReflectionClassName:
   Description: 'Use a string for `class_name` option value in the definition of a reflection.'
   Enabled: true
+  Safe: false
   VersionAdded: '0.64'
+  VersionChanged: '2.10'
 
 Rails/RefuteMethods:
   Description: 'Use `assert_not` methods instead of `refute` methods.'
@@ -589,12 +660,25 @@ Rails/RequestReferer:
     - referer
     - referrer
 
+Rails/RequireDependency:
+  Description: 'Do not use `require_dependency` when running in Zeitwerk mode. `require_dependency` is for autoloading in classic mode.'
+  Reference: 'https://guides.rubyonrails.org/autoloading_and_reloading_constants.html'
+  Enabled: false # We should enable this cop later, when all or most of our applications use zeitwerk
+  VersionAdded: '2.10'
+
 Rails/ReversibleMigration:
   Description: 'Checks whether the change method of the migration file is reversible.'
   StyleGuide: 'https://rails.rubystyle.guide#reversible-migration'
   Reference: 'https://api.rubyonrails.org/classes/ActiveRecord/Migration/CommandRecorder.html'
   Enabled: true
   VersionAdded: '0.47'
+  Include:
+    - db/migrate/*.rb
+
+Rails/ReversibleMigrationMethodDefinition:
+  Description: 'Checks whether the migration implements either a `change` method or both an `up` and a `down` method.'
+  Enabled: false # If the migration starts with a class definition, no change-, up-, or down-method is recognized, although they exist
+  VersionAdded: '2.10'
   Include:
     - db/migrate/*.rb
 
@@ -693,13 +777,24 @@ Rails/TimeZone:
   Enabled: false
   Safe: false
   VersionAdded: '0.30'
-  VersionChanged: '0.68'
+  VersionChanged: '2.10'
   # The value `strict` means that `Time` should be used with `zone`.
   # The value `flexible` allows usage of `in_time_zone` instead of `zone`.
   EnforcedStyle: flexible
   SupportedStyles:
     - strict
     - flexible
+  Exclude:
+    - '**/*.gemspec'
+
+Rails/TimeZoneAssignment:
+  Description: 'Prefer the usage of `Time.use_zone` instead of manually updating `Time.zone` value.'
+  Reference: 'https://thoughtbot.com/blog/its-about-time-zones'
+  Enabled: false
+  VersionAdded: '2.10'
+  Include:
+    - spec/**/*.rb
+    - test/**/*.rb
 
 Rails/UniqBeforePluck:
   Description: 'Prefer the use of uniq or distinct before pluck.'
@@ -729,6 +824,13 @@ Rails/UnknownEnv:
     - test
     - production
 
+Rails/UnusedIgnoredColumns:
+  Description: 'Remove a column that does not exist from `ignored_columns`.'
+  Enabled: true
+  VersionAdded: '2.11'
+  Include:
+    - app/models/**/*.rb
+
 Rails/Validation:
   Description: 'Use validates :attribute, hash of validations.'
   Enabled: true
@@ -742,6 +844,7 @@ Rails/WhereEquals:
   StyleGuide: 'https://rails.rubystyle.guide/#hash-conditions'
   Enabled: true
   VersionAdded: '2.9'
+  VersionChanged: '2.10'
 
 Rails/WhereExists:
   Description: 'Prefer `exists?(...)` over `where(...).exists?`.'
@@ -751,7 +854,7 @@ Rails/WhereExists:
     - exists
     - where
   VersionAdded: '2.7'
-  VersionChanged: '2.8'
+  VersionChanged: '2.10'
 
 Rails/WhereNot:
   Description: 'Use `where.not(...)` instead of manually constructing negated SQL in `where`.'
