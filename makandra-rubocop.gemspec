@@ -5,7 +5,7 @@ require 'makandra_rubocop/version'
 Gem::Specification.new do |spec|
   spec.name = 'makandra-rubocop'
   spec.version = MakandraRubocop::VERSION
-  spec.required_ruby_version = '>= 2.3.0'
+  spec.required_ruby_version = '>= 2.5.0'
   spec.authors = ['Arne Hartherz', 'Emanuel Denzel']
   spec.email = ['arne.hartherz@makandra.de', 'emanuel.denzel@makandra.de']
 
