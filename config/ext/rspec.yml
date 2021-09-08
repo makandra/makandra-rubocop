@@ -259,7 +259,9 @@ RSpec/ExampleLength:
   Description: Checks for long examples.
   Enabled: false # We do not want to have such limitation
   Max: 5
+  CountAsOne: []
   VersionAdded: '1.5'
+  VersionChanged: '2.3'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExampleLength
 
 RSpec/ExampleWithoutDescription:
@@ -354,6 +356,12 @@ RSpec/HooksBeforeExamples:
   Enabled: true
   VersionAdded: '1.29'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/HooksBeforeExamples
+
+RSpec/IdenticalEqualityAssertion:
+  Description: Checks for equality assertions with identical expressions on both sides.
+  Enabled: true
+  VersionAdded: '2.4'
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/IdenticalEqualityAssertion
 
 RSpec/ImplicitBlockExpectation:
   Description: Check that implicit block expectation syntax is not used.
@@ -756,6 +764,12 @@ RSpec/FactoryBot/FactoryClassName:
   VersionAdded: '1.37'
   VersionChanged: '2.0'
   StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FactoryBot/FactoryClassName
+
+RSpec/Rails/AvoidSetupHook:
+  Description: Checks that tests use RSpec `before` hook over Rails `setup` method.
+  Enabled: true
+  VersionAdded: '2.4'
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/AvoidSetupHook
 
 RSpec/Rails/HttpStatus:
   Description: Enforces use of symbolic or numeric value to describe HTTP status.
