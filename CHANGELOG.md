@@ -6,9 +6,18 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
-- Dropped support for Ruby < `2.5.0`.
-
 ### Compatible changes
+
+## 7.0.0 - 2021-09-16
+
+### Breaking changes
+
+- Dropped support for Ruby < `2.5.0`.
+- Upgrade `rubocop` from version `1.9.1` to `1.18.4`.
+- Upgrade `rubocop-rails` from version `2.9.1` to `2.11.3`.
+- Upgrade `rubocop-rspec` from version `2.2.0` to `2.4.0`.
+
+
 
 ## 6.2.0 - 2021-06-20
 
