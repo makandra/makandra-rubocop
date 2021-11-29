@@ -298,7 +298,7 @@ RSpec/ExpectActual:
 
 RSpec/ExpectChange:
   Description: Checks for consistent style of change matcher.
-  Enabled: true
+  Enabled: false # We decided to disable this cop https://github.com/makandra/makandra-rubocop/issues/29
   EnforcedStyle: method_call
   SupportedStyles:
     - method_call

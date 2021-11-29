@@ -8,6 +8,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+
+## 7.1.0 - 2021-11-29
+
+### Compatible changes
+
+- Disable `RSpec/ExpectChange`
+
+
 ## 7.0.0 - 2021-09-16
 
 ### Breaking changes
@@ -16,7 +24,6 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Upgrade `rubocop` from version `1.9.1` to `1.18.4`.
 - Upgrade `rubocop-rails` from version `2.9.1` to `2.11.3`.
 - Upgrade `rubocop-rspec` from version `2.2.0` to `2.4.0`.
-
 
 
 ## 6.2.0 - 2021-06-20
@@ -61,7 +68,6 @@ rubocop itself, so there would be never a stdout, too.
     # ./spec/support/vcr.rb:16:in `block (2 levels) in <main>'
     # ./spec/support/database_cleaner.rb:21:in `block (2 levels) in <main>'
   ```
-
 
 
 ## 6.1.0 - 2021-04-30
