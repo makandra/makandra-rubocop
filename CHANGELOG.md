@@ -9,6 +9,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Compatible changes
 
 
+## 7.2.0 - 2021-12-07
+
+### Compatible changes
+
+- Disable `Rails/LinkToBlank`
+
+
 ## 7.1.0 - 2021-11-29
 
 ### Compatible changes

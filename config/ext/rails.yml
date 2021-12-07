@@ -455,7 +455,7 @@ Rails/LinkToBlank:
     - https://mathiasbynens.github.io/rel-noopener/
     - https://html.spec.whatwg.org/multipage/links.html#link-type-noopener
     - https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.62'
 
 Rails/MailerName:
