@@ -116,6 +116,13 @@ Note that disabling cops should be an exception for extremely rare cases where y
 If our defaults don't match your opinion, you should discuss with the team.
 
 
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/makandra/makandra-rubocop.
+
+If you make any changes to this gem's Ruby code, make sure to run `rubocop`.
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -123,29 +130,40 @@ After checking out the repo, run `bin/setup` to install dependencies. You can al
 To install this gem onto your local machine, run `bundle exec rake install`.
 
 When you're making changes, update the version number in `version.rb`:
-- Increase the major version when you're upgrading the Rubocop dependency
+- Increase the major version when you're upgrading a Rubocop dependency (see below)
 - Increase the minor version e.g. when disabling a cop
 
-For release run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+For release run `bundle exec rake release`, which will create a git tag for the
+version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-### Upgrading Rubocop version being used
-1. Change `rubocop` dependency in gemspec to the release you want to upgrade to.
-2. `bundle`
-3. `git add remote rubocop https://github.com/rubocop-hq/rubocop.git`
-4. `git fetch rubocop --no-tags` (we can't import their tags or they would clash with ours)
-5. Find out the commit SHA of the release you put into the gemspec and the commit SHA of the newest release (with a tag).
-6. `git diff $OLDER_SHA $NEWER_SHA config/default.yml | git apply --3way`
-7. Resolve the merge conflicts carefully and review all changes. We do not want to loose our overrides.
-8. Commit.
+### Upgrading Rubocop dependencies
+The following procedure works for either `rubocop`, `rubocop-rails` or
+`rubocopo-rspec`. (Replace `rubocop` with the respective dependency name.)
 
-This procedure is the same for `rubocop-rails`.
+1. Change the `rubocop` dependency in the Gemspec to the version you want to
+   upgrade to.
+2. `bundle update rubocop`
 
+Next, we need to update our config file to match their updated config. If
+you have not added the Rubocop remote yet (check with `git remote -v`), do a
+`git remote add rubocop https://github.com/rubocop-hq/rubocop.git`. Then:
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/makandra/makandra-rubocop.
-
-If you make any changes to this gem's Ruby code, make sure to run `rubocop`.
+1. Update the local copy of the Rubocop repository: `git fetch rubocop --no-tags`
+   (we can't import their tags or they would clash with ours)
+2. Find the commit SHA of the previous and of the new Rubocop version in our
+   Gemspec. The easiest way is to look them up on their [releases page](https://github.com/rubocop/rubocop/releases).
+3. Diff their config/default.yml between the previously used and the new Rubocop
+   version, and write it to a file: `git diff $OLDER_SHA $NEWER_SHA config/default.yml > config_diff`
+4. If you are updating `rubocop-rails` or `rubocop-rspec`, edit the config_diff
+   file now and replace `config/default.yml` with `config/ext/{rails,rspec}.yml`
+   (respectively).
+5. Apply the diff with `git apply ./config_diff --3way`
+6. Resolve merge conflicts carefully and review all changes. We do not want to
+   loose changes in [our config files](https://github.com/makandra/makandra-rubocop/tree/master/config).
+7. Delete the patch file
+8. Increase the major version (see above)
+9. Update the CHANGELOG
+10. Commit
 
 
 ## License

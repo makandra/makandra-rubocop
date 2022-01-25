@@ -9,6 +9,12 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Compatible changes
 
 
+## 8.0.0 - 2022-01-25
+
+## Breaking changes
+- Upgrade rubocop from version `1.18.4` to `1.25.1` (adds support for Ruby 3.1).
+
+
 ## 7.2.0 - 2021-12-07
 
 ### Compatible changes
