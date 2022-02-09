@@ -655,7 +655,7 @@ Rails/RequestReferer:
   Description: 'Use consistent syntax for request.referer.'
   Enabled: true
   VersionAdded: '0.41'
-  EnforcedStyle: referer
+  EnforcedStyle: referrer # Discussed in https://github.com/makandra/makandra-rubocop/issues/34
   SupportedStyles:
     - referer
     - referrer
