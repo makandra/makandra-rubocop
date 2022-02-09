@@ -11,6 +11,15 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Compatible changes
 
 
+## 9.0.0 - 2022-02-09
+
+### Breaking changes
+
+- Changed `Rails/RequestReferer` from `EnforcedStyle` `referer` to `referrer`
+
+### Compatible changes
+
+
 ## 8.0.0 - 2022-01-25
 
 ## Breaking changes
