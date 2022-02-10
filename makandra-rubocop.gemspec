@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
   spec.description = 'A relaxed set of default Rubocop settings to use across makandra projects.'
   spec.homepage = 'https://github.com/makandra/makandra-rubocop'
   spec.license = 'MIT'
+  spec.metadata = { 'rubygems_mfa_required' => 'true' }
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
