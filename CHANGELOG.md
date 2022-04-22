@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Change `Style/HashSyntax` from `EnforcedShorthandSyntax` `always` to `either` (#36)
+
 
 ## 9.0.1 - 2022-03-09
 

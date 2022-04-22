@@ -3703,7 +3703,7 @@ Style/HashSyntax:
     # enforces both ruby19 and no_mixed_keys styles
     - ruby19_no_mixed_keys
   # Force hashes that have a hash value omission
-  EnforcedShorthandSyntax: always
+  EnforcedShorthandSyntax: either # Voted in this issue https://github.com/makandra/makandra-rubocop/issues/36, but open for re-evaluation at a later point in time.
   SupportedShorthandSyntax:
     # forces use of the 3.1 syntax (e.g. {foo:}) when the hash key and value are the same.
     - always
