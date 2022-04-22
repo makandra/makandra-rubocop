@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Disable `Naming/BlockForwarding` (#37)
 - Change `Style/HashSyntax` from `EnforcedShorthandSyntax` `always` to `either` (#36)
 
 

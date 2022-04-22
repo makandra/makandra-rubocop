@@ -2494,7 +2494,7 @@ Naming/BinaryOperatorParameterName:
 Naming/BlockForwarding:
   Description: 'Use anonymous block forwarding.'
   StyleGuide: '#block-forwarding'
-  Enabled: pending
+  Enabled: false # Voted for this in https://github.com/makandra/makandra-rubocop/issues/37
   VersionAdded: '1.24'
   EnforcedStyle: anonymous
   SupportedStyles:
