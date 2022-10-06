@@ -5,7 +5,7 @@ require 'makandra_rubocop/version'
 Gem::Specification.new do |spec|
   spec.name = 'makandra-rubocop'
   spec.version = MakandraRubocop::VERSION
-  spec.required_ruby_version = '>= 2.5.0'
+  spec.required_ruby_version = '>= 2.6.0'
   spec.authors = ['Arne Hartherz', 'Emanuel Denzel']
   spec.email = ['arne.hartherz@makandra.de', 'emanuel.denzel@makandra.de']
 
@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r(^exe/)) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rubocop', '~> 1.39.0'
+  spec.add_dependency 'rubocop', '~> 1.36.0'
   spec.add_dependency 'rubocop-rails', '~> 2.11.3'
   spec.add_dependency 'rubocop-rspec', '~> 2.4.0'
 
