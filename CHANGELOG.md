@@ -6,9 +6,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
-- Upgrade `rubocop-rails` from version `2.17.2` to `2.19.0`.
-
 ### Compatible changes
+
+
+## 11.0.0 - 2023-04-12
+
+### Breaking changes
+
+- Upgrade `rubocop-rails` from version `2.17.2` to `2.19.0`.
 
 
 ## 10.0.0 - 2022-11-09 
