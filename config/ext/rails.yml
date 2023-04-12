@@ -13,7 +13,8 @@ AllCops:
     - 'bin/**/*'
     - 'tmp/**/*'
     - 'public/system/**/*'
-    - 'db/schema.rb'
+    - 'db/*schema.rb'
+    - 'log/**/*'
   # What version of Rails is the inspected code using?  If a value is specified
   # for TargetRailsVersion then it is used.  Acceptable values are specified
   # as a float (i.e. 5.1); the patch version of Rails should not be included.
@@ -43,6 +44,7 @@ Lint/NumberConversion:
     - fortnight
     - fortnights
     - in_milliseconds
+  AllowedPatterns: []
 
 Rails:
   Enabled: true
@@ -50,8 +52,6 @@ Rails:
 
 Rails/ActionControllerFlashBeforeRender:
   Description: 'Use `flash.now` instead of `flash` before `render`.'
-  StyleGuide: 'https://rails.rubystyle.guide/#flash-before-render'
-  Reference: 'https://api.rubyonrails.org/classes/ActionController/FlashBeforeRender.html'
   Enabled: false # there may be cases where we actually want to use `flash` before a render.
   SafeAutoCorrect: false
   VersionAdded: '2.16'
@@ -115,7 +115,9 @@ Rails/ActiveRecordOverride:
     Check for overriding Active Record methods instead of using
     callbacks.
   Enabled: true
+  Severity: warning
   VersionAdded: '0.67'
+  VersionChanged: '2.18'
   Include:
     - app/models/**/*.rb
 
@@ -204,8 +206,11 @@ Rails/AttributeDefaultBlockValue:
 
 Rails/BelongsTo:
   Description: >-
-    Use `optional: true` instead of `required: false` for
-    `belongs_to` relations.
+                  Use `optional: true` instead of `required: false` for
+                  `belongs_to` relations.
+  Reference:
+    - https://guides.rubyonrails.org/5_0_release_notes.html
+    - https://github.com/rails/rails/pull/18937
   Enabled: true
   VersionAdded: '0.62'
 
@@ -224,6 +229,9 @@ Rails/Blank:
 
 Rails/BulkChangeTable:
   Description: 'Check whether alter queries are combinable.'
+  Reference:
+    - https://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-change_table
+    - https://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/Table.html
   Enabled: false # We'll maybe enable this later.
   VersionAdded: '0.57'
   Database: null
@@ -311,9 +319,10 @@ Rails/DelegateAllowBlank:
 Rails/DeprecatedActiveModelErrorsMethods:
   Description: 'Avoid manipulating ActiveModel errors hash directly.'
   Enabled: true
+  Severity: warning
   Safe: false
   VersionAdded: '2.14'
-  VersionChanged: '2.15'
+  VersionChanged: '2.18'
 
 Rails/DotSeparatedKeys:
   Description: 'Enforces the use of dot-separated keys instead of `:scope` options in `I18n` translation methods.'
@@ -324,12 +333,16 @@ Rails/DotSeparatedKeys:
 Rails/DuplicateAssociation:
   Description: "Don't repeat associations in a model."
   Enabled: true
+  Severity: warning
   VersionAdded: '2.14'
+  VersionChanged: '2.18'
 
 Rails/DuplicateScope:
   Description: 'Multiple scopes share this same where clause.'
   Enabled: true
+  Severity: warning
   VersionAdded: '2.14'
+  VersionChanged: '2.18'
 
 Rails/DurationArithmetic:
   Description: 'Do not use duration as arithmetic operand with `Time.current`.'
@@ -441,11 +454,12 @@ Rails/FindById:
   VersionAdded: '2.7'
 
 Rails/FindEach:
-  Description: 'Prefer all.find_each over all.find.'
+  Description: 'Prefer all.find_each over all.each.'
   StyleGuide: 'https://rails.rubystyle.guide#find-each'
   Enabled: true
+  Safe: false
   VersionAdded: '0.30'
-  VersionChanged: '2.9'
+  VersionChanged: '2.19'
   Include:
     - app/models/**/*.rb
   AllowedMethods:
@@ -511,7 +525,7 @@ Rails/I18nLazyLookup:
   Enabled: true
   VersionAdded: '2.14'
   Include:
-    - 'controllers/**/*'
+    - 'app/controllers/**/*.rb'
 
 Rails/I18nLocaleAssignment:
   Description: 'Prefer the usage of `I18n.with_locale` instead of manually updating `I18n.locale` value.'
@@ -524,7 +538,7 @@ Rails/I18nLocaleAssignment:
 Rails/I18nLocaleTexts:
   Description: 'Enforces use of I18n and locale files instead of locale specific strings.'
   StyleGuide: 'https://rails.rubystyle.guide/#locale-texts'
-  Enabled: true
+  Enabled: false # Might be enabled for projects with localization
   VersionAdded: '2.14'
 
 Rails/IgnoredColumnsAssignment:
@@ -563,6 +577,9 @@ Rails/Inquiry:
 
 Rails/InverseOf:
   Description: 'Checks for associations where the inverse cannot be determined automatically.'
+  Reference:
+    - https://guides.rubyonrails.org/association_basics.html#bi-directional-associations
+    - https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#module-ActiveRecord::Associations::ClassMethods-label-Setting+Inverses
   Enabled: true
   VersionAdded: '0.52'
   IgnoreScopes: false
@@ -666,7 +683,9 @@ Rails/Pluck:
   Description: 'Prefer `pluck` over `map { ... }`.'
   StyleGuide: 'https://rails.rubystyle.guide#pluck'
   Enabled: true
+  Safe: false
   VersionAdded: '2.7'
+  VersionChanged: '2.18'
 
 Rails/PluckId:
   Description: 'Use `ids` instead of `pluck(:id)` or `pluck(primary_key)`.'
@@ -818,6 +837,18 @@ Rails/RequireDependency:
   Enabled: false # We should enable this cop later, when all or most of our applications use zeitwerk
   VersionAdded: '2.10'
 
+Rails/ResponseParsedBody:
+  Description: Prefer `response.parsed_body` to `JSON.parse(response.body)`.
+  Enabled: true
+  Safe: false
+  VersionAdded: '2.18'
+  VersionChanged: '2.19'
+  Include:
+    - spec/controllers/**/*.rb
+    - spec/requests/**/*.rb
+    - test/controllers/**/*.rb
+    - test/integration/**/*.rb
+
 Rails/ReversibleMigration:
   Description: 'Checks whether the change method of the migration file is reversible.'
   StyleGuide: 'https://rails.rubystyle.guide#reversible-migration'
@@ -963,6 +994,14 @@ Rails/TableNameAssignment:
   Include:
     - app/models/**/*.rb
 
+Rails/ThreeStateBooleanColumn:
+  Description: 'Add a default value and a `NOT NULL` constraint to boolean columns.'
+  StyleGuide: 'https://rails.rubystyle.guide/#three-state-boolean'
+  Enabled: false # Optional for specific projects https://makandracards.com/makandra/536214-rails-using-database-default-values-for-boolean-attributes
+  VersionAdded: '2.19'
+  Include:
+    - db/**/*.rb
+
 Rails/TimeZone:
   Description: 'Checks the correct usage of time zone aware methods.'
   StyleGuide: 'https://rails.rubystyle.guide#time'
@@ -1009,10 +1048,14 @@ Rails/TopLevelHashWithIndifferentAccess:
   Description: 'Identifies top-level `HashWithIndifferentAccess`.'
   Reference: 'https://guides.rubyonrails.org/upgrading_ruby_on_rails.html#top-level-hashwithindifferentaccess-is-soft-deprecated'
   Enabled: true
+  Severity: warning
   VersionAdded: '2.16'
+  VersionChanged: '2.18'
 
 Rails/TransactionExitStatement:
   Description: 'Avoid the usage of `return`, `break` and `throw` in transaction blocks.'
+  Reference:
+    - https://github.com/rails/rails/commit/15aa4200e083
   Enabled: true # Get a head start on deprecations: https://blog.saeloun.com/2020/04/06/rails-disallow-return-break-and-throw-to-exit-transaction.html
   VersionAdded: '2.14'
 
@@ -1037,7 +1080,9 @@ Rails/UniqueValidationWithoutIndex:
 Rails/UnknownEnv:
   Description: 'Use correct environment name.'
   Enabled: false # https://github.com/makandra/makandra-rubocop/issues/11
+  Severity: warning
   VersionAdded: '0.51'
+  VersionChanged: '2.18'
   Environments:
     - development
     - test
@@ -1090,11 +1135,17 @@ Rails/WhereNot:
 Rails/WhereNotWithMultipleConditions:
   Description: 'Do not use `where.not(...)` with multiple conditions.'
   Enabled: true
+  Severity: warning
   VersionAdded: '2.17'
+  VersionChanged: '2.18'
 
 # Accept `redirect_to(...) and return` and similar cases.
 Style/AndOr:
   EnforcedStyle: conditionals
+
+Style/FormatStringToken:
+  AllowedMethods:
+    - redirect
 
 Style/SymbolProc:
   AllowedMethods:
