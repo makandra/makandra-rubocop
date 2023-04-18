@@ -862,7 +862,7 @@ RSpec/Capybara/FeatureMethods:
 
 RSpec/Capybara/SpecificFinders:
   Description: Checks if there is a more specific finder offered by Capybara.
-  Enabled: true
+  Enabled: false # Voted in https://github.com/makandra/makandra-rubocop/pull/41
   VersionAdded: '2.13'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Capybara/SpecificFinders
 
