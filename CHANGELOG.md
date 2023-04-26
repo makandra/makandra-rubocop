@@ -9,6 +9,12 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Compatible changes
 
 
+## 11.1.0 - 2023-04-26
+
+### Compatible changes
+
+-  Disable `RSpec/Capybara/SpecificFinders` (#41)
+
 ## 11.0.0 - 2023-04-12
 
 ### Breaking changes
