@@ -1597,7 +1597,7 @@ Lint/ConstantResolution:
 
 Lint/Debugger:
   Description: 'Check for debugger calls.'
-  Enabled: false
+  Enabled: true # Voted for this in https://github.com/makandra/makandra-rubocop/issues/42
   VersionAdded: '0.14'
   VersionChanged: '1.10'
   DebuggerMethods:
