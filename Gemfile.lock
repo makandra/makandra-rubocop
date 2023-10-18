@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    makandra-rubocop (11.1.0)
+    makandra-rubocop (11.2.0)
       rubocop (~> 1.36.0)
       rubocop-rails (~> 2.19.0)
       rubocop-rspec (~> 2.13.2)

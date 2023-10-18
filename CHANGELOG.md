@@ -8,6 +8,11 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+
+## 11.2.0 - 2023-10-18
+
+### Compatible changes
+
 - Enable `Lint/Debugger` (#42)
 
 
