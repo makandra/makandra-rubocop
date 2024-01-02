@@ -3107,7 +3107,7 @@ Style/ArgumentsForwarding:
   StyleGuide: '#arguments-forwarding'
   Enabled: true
   AllowOnlyRestArgument: true
-  UseAnonymousForwarding: true
+  UseAnonymousForwarding: false # Enforcing anonymous * or ** does not improve code readability.
   RedundantRestArgumentNames:
     - args
     - arguments
