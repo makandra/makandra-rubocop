@@ -6,6 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
+- Upgrade to `rubocop` 1.59.0 (was 1.39.0)
+- Drop support for Ruby 2.6 (following change from `rubocop` 1.51.0)
+
 ### Compatible changes
 
 
