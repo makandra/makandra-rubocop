@@ -2602,7 +2602,7 @@ Metrics/ClassLength:
 
 Metrics/CollectionLiteralLength:
   Description: 'Checks for `Array` or `Hash` literals with many entries.'
-  Enabled: pending
+  Enabled: false
   VersionAdded: '1.47'
   LengthThreshold: 250
 
@@ -3535,7 +3535,7 @@ Style/ComparableClamp:
 
 Style/ConcatArrayLiterals:
   Description: 'Enforces the use of `Array#push(item)` instead of `Array#concat([item])` to avoid redundant array literals.'
-  Enabled: pending
+  Enabled: false
   Safe: false
   VersionAdded: '1.41'
 
@@ -3597,7 +3597,7 @@ Style/Copyright:
 Style/DataInheritance:
   Description: 'Checks for inheritance from Data.define.'
   StyleGuide: '#no-extend-data-define'
-  Enabled: pending
+  Enabled: false # decided to disable cop to be consistent with Style/StructInheritance
   SafeAutoCorrect: false
   VersionAdded: '1.49'
   VersionChanged: '1.51'
@@ -4330,7 +4330,7 @@ Style/MinMax:
 
 Style/MinMaxComparison:
   Description: 'Enforces the use of `max` or `min` instead of comparison for greater or less.'
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '1.42'
 
