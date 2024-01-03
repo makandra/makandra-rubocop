@@ -808,7 +808,7 @@ Rails/ReadWriteAttribute:
 Rails/RedundantActiveRecordAllMethod:
   Description: Detect redundant `all` used as a receiver for Active Record query methods.
   StyleGuide: 'https://rails.rubystyle.guide/#redundant-all'
-  Enabled: pending
+  Enabled: false # While we agree that User.all.find is redundant, it can be useful to make relation access more explicit for other query methods.
   Safe: false
   AllowedReceivers:
     - ActionMailer::Preview
