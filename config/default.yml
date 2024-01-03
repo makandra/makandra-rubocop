@@ -3106,7 +3106,7 @@ Style/ArgumentsForwarding:
   Description: 'Use arguments forwarding.'
   StyleGuide: '#arguments-forwarding'
   Enabled: true
-  AllowOnlyRestArgument: true
+  # AllowOnlyRestArgument: true # Option has been commented out since it produced warnings when running Rubocop on Ruby 3.3 applications. Not specifying it avoids warnings, and seems to be fine.
   UseAnonymousForwarding: false # Enforcing anonymous * or ** does not improve code readability.
   RedundantRestArgumentNames:
     - args
