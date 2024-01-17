@@ -4726,6 +4726,7 @@ Style/OperatorMethodCall:
 
 Style/OptionHash:
   Description: "Don't use option hashes when you can use keyword arguments."
+  StyleGuide: '#keyword-arguments-vs-option-hashes'
   Enabled: false
   VersionAdded: '0.33'
   VersionChanged: '0.34'
@@ -5251,7 +5252,8 @@ Style/SingleLineMethods:
   AllowIfMethodIsEmpty: true
 
 Style/SlicingWithRange:
-  Description: 'Checks array slicing is done with endless ranges when suitable.'
+  Description: 'Checks array slicing is done with redundant, endless, and beginless ranges when suitable.'
+  StyleGuide: '#slicing-with-ranges'
   Enabled: true
   VersionAdded: '0.83'
   Safe: false
