@@ -11,6 +11,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## 12.0.0 - 2024-01-17
 
+### Compatible changes
+
+- Supports Ruby 3.3 and Rails 7.1.
+
 ### Breaking changes
 
 - Upgrade to `rubocop` 1.60.0 (was 1.39.0)
