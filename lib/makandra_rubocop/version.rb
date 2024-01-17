@@ -1,3 +1,3 @@
 module MakandraRubocop
-  VERSION = '11.2.0'.freeze
+  VERSION = '12.0.0'.freeze
 end
