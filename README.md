@@ -54,6 +54,24 @@ inherit_gem:
     - config/ext/rspec.yml
 ```
 
+**For Capybara**
+
+```yaml
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+    - config/ext/capybara.yml
+```
+
+**For Factory Bot**
+
+```yaml
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+    - config/ext/factory_bot.yml
+```
+
 Any per-project rules can then be defined in the `.rubocop.yml`:
 
 ```yaml
