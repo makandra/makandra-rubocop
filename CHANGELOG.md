@@ -8,6 +8,11 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+
+## 12.1.0 - 2024-01-07
+
+### Compatible changes
+
 - Add default configuration for `rubocop-capybara` and `rubocop-factory_bot`
 
 
