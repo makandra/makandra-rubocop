@@ -82,7 +82,7 @@ Capybara/VisibilityMatcher:
   Reference: https://www.rubydoc.info/gems/rubocop-capybara/RuboCop/Cop/Capybara/VisibilityMatcher
 
 Capybara/RSpec:
-  Enabled: true
+  Enabled: false # disable nested cops, as we load rubocop-rspec separately
   Include: *1
 
 Capybara/RSpec/HaveSelector:

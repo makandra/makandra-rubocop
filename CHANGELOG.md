@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
+- Upgrade to `rubocop-rspec` 2.25.0 (was 2.13.2)
+- Disable nested cops introduced by dependencies (e.g. Rspec/Capybara). 
+Since the config for the respective gem should be considered the single source of truth
+
 ### Compatible changes
 
 

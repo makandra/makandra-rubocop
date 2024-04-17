@@ -18,8 +18,6 @@ RSpec:
         - Expectations
         - Helpers
         - Hooks
-        - HookScopes
-        - Runners
         - Subjects
     ExampleGroups:
       inherit_mode:
@@ -82,12 +80,6 @@ RSpec:
       - prepend_after
       - after
       - append_after
-    HookScopes:
-      - each
-      - example
-      - context
-      - all
-      - suite
     Includes:
       inherit_mode:
         merge:
@@ -99,10 +91,6 @@ RSpec:
         - include_examples
       Context:
         - include_context
-    Runners:
-      - to
-      - to_not
-      - not_to
     SharedGroups:
       inherit_mode:
         merge:
@@ -157,16 +145,26 @@ RSpec/Be:
   StyleGuide: https://rspec.rubystyle.guide/#be-matcher
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Be
 
+RSpec/BeEmpty:
+  Description: Prefer using `be_empty` when checking for an empty array.
+  Enabled: pending
+  VersionAdded: '2.20'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/BeEmpty
+
 RSpec/BeEq:
   Description: Check for expectations where `be(...)` can replace `eq(...)`.
   Enabled: false # Leads to a large diff and the benefit is not that large
+  Safe: false
   VersionAdded: 2.9.0
+  VersionChanged: '2.16'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/BeEq
 
 RSpec/BeEql:
   Description: Check for expectations where `be(...)` can replace `eql(...)`.
   Enabled: true
+  Safe: false
   VersionAdded: '1.7'
+  VersionChanged: '2.16'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/BeEql
 
 RSpec/BeNil:
@@ -184,10 +182,11 @@ RSpec/BeforeAfterAll:
   Description: Check that before/after(:all) isn't being used.
   Enabled: true
   Exclude:
-    - spec/spec_helper.rb
-    - spec/rails_helper.rb
-    - spec/support/**/*.rb
+    - "**/spec/spec_helper.rb"
+    - "**/spec/rails_helper.rb"
+    - "**/spec/support/**/*.rb"
   VersionAdded: '1.12'
+  VersionChanged: '2.23'
   StyleGuide: https://rspec.rubystyle.guide/#avoid-hooks-with-context-scope
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/BeforeAfterAll
 
@@ -195,7 +194,7 @@ RSpec/ChangeByZero:
   Description: Prefer negated matchers over `to change.by(0)`.
   Enabled: true
   VersionAdded: '2.11'
-  VersionChanged: '2.13'
+  VersionChanged: '2.14'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ChangeByZero
   NegatedMatcher: ~
 
@@ -209,6 +208,12 @@ RSpec/ClassCheck:
     - be_a
     - be_kind_of
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ClassCheck
+
+RSpec/ContainExactly:
+  Description: Checks where `contain_exactly` is used.
+  Enabled: true
+  VersionAdded: '2.19'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ContainExactly
 
 RSpec/ContextMethod:
   Description: "`context` should not be used for specifying methods."
@@ -291,6 +296,12 @@ RSpec/Dialect:
   VersionAdded: '1.33'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Dialect
 
+RSpec/DuplicatedMetadata:
+  Description: Avoid duplicated metadata.
+  Enabled: pending
+  VersionAdded: '2.16'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DuplicatedMetadata
+
 RSpec/EmptyExampleGroup:
   Description: Checks if an example group does not include any tests.
   Enabled: true
@@ -343,6 +354,18 @@ RSpec/EmptyLineAfterSubject:
   StyleGuide: https://rspec.rubystyle.guide/#empty-line-after-let
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/EmptyLineAfterSubject
 
+RSpec/EmptyMetadata:
+  Description: Avoid empty metadata hash.
+  Enabled: pending
+  VersionAdded: '2.24'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/EmptyMetadata
+
+RSpec/Eq:
+  Description: Use `eq` instead of `be ==` to compare objects.
+  Enabled: true
+  VersionAdded: '2.24'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Eq
+
 RSpec/ExampleLength:
   Description: Checks for long examples.
   Enabled: false # We do not want to have such limitation
@@ -378,8 +401,10 @@ RSpec/ExampleWording:
     have: has
     HAVE: HAS
   IgnoredWords: []
+  DisallowedExamples:
+    - works
   VersionAdded: '1.0'
-  VersionChanged: '1.2'
+  VersionChanged: '2.13'
   StyleGuide: https://rspec.rubystyle.guide/#should-in-example-docstrings
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExampleWording
 
@@ -387,8 +412,9 @@ RSpec/ExpectActual:
   Description: Checks for `expect(...)` calls containing literal values.
   Enabled: true
   Exclude:
-    - spec/routing/**/*
+    - "**/spec/routing/**/*"
   VersionAdded: '1.7'
+  VersionChanged: '2.23'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExpectActual
 
 RSpec/ExpectChange:
@@ -427,7 +453,7 @@ RSpec/FilePath:
   IgnoreMethods: false
   SpecSuffixOnly: false
   VersionAdded: '1.2'
-  VersionChanged: '1.40'
+  VersionChanged: '2.24'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FilePath
 
 RSpec/Focus:
@@ -487,9 +513,20 @@ RSpec/ImplicitSubject:
     - single_line_only
     - single_statement_only
     - disallow
+    - require_implicit
   VersionAdded: '1.29'
-  VersionChanged: '1.30'
+  VersionChanged: '2.13'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ImplicitSubject
+
+RSpec/IndexedLet:
+  Description: Do not set up test data using indexes (e.g., `item_1`, `item_2`).
+  Enabled: true
+  VersionAdded: '2.20'
+  VersionChanged: '2.23'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/IndexedLet
+  Max: 1
+  AllowedIdentifiers: []
+  AllowedPatterns: []
 
 RSpec/InstanceSpy:
   Description: Checks for `instance_double` used with `have_received`.
@@ -550,6 +587,12 @@ RSpec/LetSetup:
   VersionAdded: '1.7'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/LetSetup
 
+RSpec/MatchArray:
+  Description: Checks where `match_array` is used.
+  Enabled: true
+  VersionAdded: '2.19'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MatchArray
+
 RSpec/MessageChain:
   Description: Check that chains of messages are not being stubbed.
   Enabled: true
@@ -576,6 +619,16 @@ RSpec/MessageSpies:
     - receive
   VersionAdded: '1.9'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MessageSpies
+
+RSpec/MetadataStyle:
+  Description: Use consistent metadata style.
+  Enabled: true
+  EnforcedStyle: symbol
+  SupportedStyles:
+    - hash
+    - symbol
+  VersionAdded: '2.24'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MetadataStyle
 
 RSpec/MissingExampleGroupArgument:
   Description: Checks that the first argument to an example group is not empty.
@@ -616,8 +669,13 @@ RSpec/MultipleSubjects:
 RSpec/NamedSubject:
   Description: Checks for explicitly referenced test subjects.
   Enabled: false # https://github.com/makandra/makandra-rubocop/issues/23 - good default but not enforced
+  EnforcedStyle: always
+  SupportedStyles:
+    - always
+    - named_only
   IgnoreSharedExamples: true
   VersionAdded: 1.5.3
+  VersionChanged: '2.15'
   StyleGuide: https://rspec.rubystyle.guide/#use-subject
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/NamedSubject
 
@@ -635,7 +693,11 @@ RSpec/NoExpectationExample:
   Enabled: false # requires some config for custom expectations
   Safe: false
   VersionAdded: '2.13'
+  VersionChanged: '2.14'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/NoExpectationExample
+  AllowedPatterns:
+    - "^expect_"
+    - "^assert_"
 
 RSpec/NotToNot:
   Description: Checks for consistent method usage for negating expectations.
@@ -659,6 +721,12 @@ RSpec/Pending:
   VersionAdded: '1.25'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Pending
 
+RSpec/PendingWithoutReason:
+  Description: Checks for pending or skipped examples without reason.
+  Enabled: pending
+  VersionAdded: '2.16'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/PendingWithoutReason
+
 RSpec/PredicateMatcher:
   Description: Prefer using predicate matcher over using predicate method directly.
   Enabled: true # Maybe we need to remove this in the future
@@ -679,11 +747,24 @@ RSpec/ReceiveCounts:
   VersionAdded: '1.26'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ReceiveCounts
 
+RSpec/ReceiveMessages:
+  Description: Checks for multiple messages stubbed on the same object.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '2.23'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ReceiveMessages
+
 RSpec/ReceiveNever:
   Description: Prefer `not_to receive(...)` over `receive(...).never`.
   Enabled: true
   VersionAdded: '1.28'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ReceiveNever
+
+RSpec/RedundantAround:
+  Description: Remove redundant `around` hook.
+  Enabled: pending
+  VersionAdded: '2.19'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/RedundantAround
 
 RSpec/RepeatedDescription:
   Description: Check for repeated description strings in example groups.
@@ -757,6 +838,43 @@ RSpec/SingleArgumentMessageChain:
   VersionAdded: '1.9'
   VersionChanged: '1.10'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/SingleArgumentMessageChain
+
+RSpec/SkipBlockInsideExample:
+  Description: Checks for passing a block to `skip` within examples.
+  Enabled: pending
+  VersionAdded: '2.19'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/SkipBlockInsideExample
+
+RSpec/SortMetadata:
+  Description: Sort RSpec metadata alphabetically.
+  Enabled: false
+  VersionAdded: '2.14'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/SortMetadata
+
+RSpec/SpecFilePathFormat:
+  Description: Checks that spec file paths are consistent and well-formed.
+  Enabled: pending
+  Include:
+    - "**/*_spec.rb"
+  Exclude:
+    - "**/spec/routing/**/*"
+  CustomTransform:
+    RuboCop: rubocop
+    RSpec: rspec
+  IgnoreMethods: false
+  IgnoreMetadata:
+    type: routing
+  VersionAdded: '2.24'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/SpecFilePathFormat
+
+RSpec/SpecFilePathSuffix:
+  Description: Checks that spec file paths suffix are consistent and well-formed.
+  Enabled: pending
+  VersionAdded: '2.24'
+  Include:
+    - "**/*_spec*rb*"
+    - "**/spec/**/*"
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/SpecFilePathSuffix
 
 RSpec/StubbedMock:
   Description: Checks that message expectations do not have a configured response.
@@ -841,7 +959,7 @@ RSpec/Yield:
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Yield
 
 RSpec/Capybara:
-  Enabled: true
+  Enabled: false # disable nested cops, as we load rubocop-capybara separately
   Include: *1
   Language: *2
 
@@ -859,6 +977,28 @@ RSpec/Capybara/FeatureMethods:
   VersionAdded: '1.17'
   VersionChanged: '2.0'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Capybara/FeatureMethods
+
+RSpec/Capybara/MatchStyle:
+  Description: Checks for usage of deprecated style methods.
+  Enabled: pending
+  VersionAdded: '2.17'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Capybara/MatchStyle
+
+RSpec/Capybara/NegationMatcher:
+  Description: Enforces use of `have_no_*` or `not_to` for negated expectations.
+  Enabled: pending
+  VersionAdded: '2.14'
+  EnforcedStyle: not_to
+  SupportedStyles:
+    - have_no
+    - not_to
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Capybara/NegationMatcher
+
+RSpec/Capybara/SpecificActions:
+  Description: Checks for there is a more specific actions offered by Capybara.
+  Enabled: pending
+  VersionAdded: '2.14'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Capybara/SpecificActions
 
 RSpec/Capybara/SpecificFinders:
   Description: Checks if there is a more specific finder offered by Capybara.
@@ -880,7 +1020,7 @@ RSpec/Capybara/VisibilityMatcher:
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Capybara/VisibilityMatcher
 
 RSpec/FactoryBot:
-  Enabled: true
+  Enabled: false # disable nested cops, as we load rubocop-factory_bot separately
   Include: *1
   Language: *2
 
@@ -888,12 +1028,22 @@ RSpec/FactoryBot/AttributeDefinedStatically:
   Description: Always declare attribute values as blocks.
   Enabled: true
   Include:
-    - spec/factories.rb
-    - spec/factories/**/*.rb
-    - features/support/factories/**/*.rb
+    - "**/spec/factories.rb"
+    - "**/spec/factories/**/*.rb"
+    - "**/features/support/factories/**/*.rb"
   VersionAdded: '1.28'
-  VersionChanged: '2.0'
+  VersionChanged: '2.23'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FactoryBot/AttributeDefinedStatically
+
+RSpec/FactoryBot/ConsistentParenthesesStyle:
+  Description: Use a consistent style for parentheses in factory bot calls.
+  Enabled: pending
+  EnforcedStyle: require_parentheses
+  SupportedStyles:
+    - require_parentheses
+    - omit_parentheses
+  VersionAdded: '2.14'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FactoryBot/ConsistentParenthesesStyle
 
 RSpec/FactoryBot/CreateList:
   Description: Checks for create_list usage.
@@ -901,27 +1051,37 @@ RSpec/FactoryBot/CreateList:
   Include:
     - "**/*_spec.rb"
     - "**/spec/**/*"
-    - spec/factories.rb
-    - spec/factories/**/*.rb
-    - features/support/factories/**/*.rb
+    - "**/spec/factories.rb"
+    - "**/spec/factories/**/*.rb"
+    - "**/features/support/factories/**/*.rb"
   EnforcedStyle: create_list
   SupportedStyles:
     - create_list
     - n_times
   VersionAdded: '1.25'
-  VersionChanged: '2.0'
+  VersionChanged: '2.23'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FactoryBot/CreateList
 
 RSpec/FactoryBot/FactoryClassName:
   Description: Use string value when setting the class attribute explicitly.
   Enabled: true
   Include:
-    - spec/factories.rb
-    - spec/factories/**/*.rb
-    - features/support/factories/**/*.rb
+    - "**/spec/factories.rb"
+    - "**/spec/factories/**/*.rb"
+    - "**/features/support/factories/**/*.rb"
   VersionAdded: '1.37'
-  VersionChanged: '2.0'
+  VersionChanged: '2.23'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FactoryBot/FactoryClassName
+
+RSpec/FactoryBot/FactoryNameStyle:
+  Description: Checks for name style for argument of FactoryBot::Syntax::Methods.
+  Enabled: pending
+  VersionAdded: '2.16'
+  EnforcedStyle: symbol
+  SupportedStyles:
+    - symbol
+    - string
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FactoryBot/FactoryNameStyle
 
 RSpec/FactoryBot/SyntaxMethods:
   Description: Use shorthands from `FactoryBot::Syntax::Methods` in your specs.
@@ -931,7 +1091,7 @@ RSpec/FactoryBot/SyntaxMethods:
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FactoryBot/SyntaxMethods
 
 RSpec/Rails:
-  Enabled: true
+  Enabled: false # disable nested cops, as we load rubocop-rails separately
   Include: *1
   Language: *2
 
@@ -955,6 +1115,54 @@ RSpec/Rails/HttpStatus:
   SupportedStyles:
     - numeric
     - symbolic
+    - be_status
   VersionAdded: '1.23'
-  VersionChanged: '2.0'
+  VersionChanged: '2.20'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/HttpStatus
+
+RSpec/Rails/InferredSpecType:
+  Description: Identifies redundant spec type.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '2.14'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/InferredSpecType
+  Inferences:
+    channels: channel
+    controllers: controller
+    features: feature
+    generator: generator
+    helpers: helper
+    jobs: job
+    mailboxes: mailbox
+    mailers: mailer
+    models: model
+    requests: request
+    integration: request
+    api: request
+    routing: routing
+    system: system
+    views: view
+
+RSpec/Rails/MinitestAssertions:
+  Description: Check if using Minitest matchers.
+  Enabled: pending
+  VersionAdded: '2.17'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/MinitestAssertions
+
+RSpec/Rails/NegationBeValid:
+  Description: Enforces use of `be_invalid` or `not_to` for negated be_valid.
+  Safe: false
+  EnforcedStyle: not_to
+  SupportedStyles:
+    - not_to
+    - be_invalid
+  Enabled: pending
+  VersionAdded: '2.23'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/NegationBeValid
+
+RSpec/Rails/TravelAround:
+  Description: Prefer to travel in `before` rather than `around`.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '2.19'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/TravelAround
