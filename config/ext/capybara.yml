@@ -17,7 +17,7 @@ Capybara:
 
 Capybara/ClickLinkOrButtonStyle:
   Description: Checks for methods of button or link clicks.
-  Enabled: pending
+  Enabled: false # https://github.com/makandra/makandra-rubocop/issues/49
   VersionAdded: '2.19'
   VersionChanged: '2.20'
   EnforcedStyle: link_or_button

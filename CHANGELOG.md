@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+-  Disable `Capybara/ClickLinkOrButtonStyle` (#49)
+
 
 ## 13.0.0 - 2024-05-27
 
