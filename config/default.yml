@@ -3710,7 +3710,6 @@ Style/EmptyElse:
   Description: 'Avoid empty else-clauses.'
   Enabled: true
   VersionAdded: '0.28'
-  VersionChanged: '0.32'
   EnforcedStyle: empty
   # empty - warn only on empty `else`
   # nil - warn on `else` with nil in it

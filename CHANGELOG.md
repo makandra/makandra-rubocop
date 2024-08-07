@@ -8,7 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
--  Disable `Capybara/ClickLinkOrButtonStyle` (#49)
+- Disable `Capybara/ClickLinkOrButtonStyle` (#49)
+- Upgrade to `rubocop-rspec` 3.0.3 (was 2.25.0)
+- Upgrade to `rubocop` 1.61 (was 1.60)
 
 
 ## 13.0.0 - 2024-05-27
