@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+- Fix `rubocop` 1.61 dependency to avoid upgrading to newer rubocop releases.
+
 
 ## 14.0.0 - 2024-08-07
 
