@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    makandra-rubocop (14.0.0)
+    makandra-rubocop (14.0.1)
       rubocop (~> 1.61.0)
       rubocop-capybara (~> 2.20.0)
       rubocop-factory_bot (~> 2.25.1)
