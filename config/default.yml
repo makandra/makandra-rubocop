@@ -2572,10 +2572,10 @@ Lint/UselessAccessModifier:
 Lint/UselessAssignment:
   Description: 'Checks for useless assignment to a local variable.'
   StyleGuide: '#underscore-unused-vars'
-  Enabled: false # There are cases where it is easier to read if the the same body is used for different branches
+  Enabled: false # There are cases where it is easier to read if the same body is used for different branches
   VersionAdded: '0.11'
   VersionChanged: '1.66'
-  SafeAutoCorrect: false
+  AutoCorrect: contextual
 
 Lint/UselessDefined:
   Description: 'Checks for calls to `defined?` with strings and symbols. The result of such a call will always be truthy.'
