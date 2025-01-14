@@ -243,9 +243,9 @@ Bundler/GemVersion:
 
 Bundler/InsecureProtocolSource:
   Description: >-
-                 The source `:gemcutter`, `:rubygems` and `:rubyforge` are deprecated
-                 because HTTP requests are insecure. Please change your source to
-                 'https://rubygems.org' if possible, or 'http://rubygems.org' if not.
+    The source `:gemcutter`, `:rubygems` and `:rubyforge` are deprecated
+    because HTTP requests are insecure. Please change your source to
+    'https://rubygems.org' if possible, or 'http://rubygems.org' if not.
   Enabled: true
   Severity: warning
   VersionAdded: '0.50'
@@ -386,8 +386,8 @@ Layout/AccessModifierIndentation:
 
 Layout/ArgumentAlignment:
   Description: >-
-                 Align the arguments of a method call if they span more
-                 than one line.
+    Align the arguments of a method call if they span more
+    than one line.
   StyleGuide: '#no-double-indent'
   Enabled: false
   VersionAdded: '0.68'
@@ -415,8 +415,8 @@ Layout/ArgumentAlignment:
 
 Layout/ArrayAlignment:
   Description: >-
-                 Align the elements of an array literal if they span more than
-                 one line.
+    Align the elements of an array literal if they span more than
+    one line.
   StyleGuide: '#no-double-indent'
   Enabled: false
   VersionAdded: '0.49'
@@ -1674,7 +1674,7 @@ Lint/ConstantOverwrittenInRescue:
 
 Lint/ConstantReassignment:
   Description: 'Checks for constant reassignments.'
-  Enabled: pending #todo
+  Enabled: true
   VersionAdded: '1.70'
 
 Lint/ConstantResolution:
@@ -1847,7 +1847,7 @@ Lint/DuplicateRescueException:
 
 Lint/DuplicateSetElement:
   Description: 'Checks for duplicate elements in Set.'
-  Enabled: true # todo
+  Enabled: true
   VersionAdded: '1.67'
 
 Lint/EachWithObjectArgument:
@@ -1964,7 +1964,7 @@ Lint/HashCompareByIdentity:
 
 Lint/HashNewWithKeywordArgumentsAsDefault:
   Description: 'Checks for the deprecated use of keyword arguments for hash default in `Hash.new`.'
-  Enabled: true # todo
+  Enabled: true
   VersionAdded: '1.69'
 
 Lint/HeredocMethodCallPosition:
@@ -2159,7 +2159,7 @@ Lint/NumberedParameterAssignment:
 
 Lint/NumericOperationWithConstantResult:
   Description: 'Checks for numeric operations with constant results.'
-  Enabled: pending  # todo
+  Enabled: true
   VersionAdded: '1.69'
 
 Lint/OrAssignmentToConstant:
@@ -2410,7 +2410,7 @@ Lint/ShadowingOuterLocalVariable:
 Lint/SharedMutableDefault:
   Description: 'Checks for mutable literals used as default arguments during Hash initialization.'
   StyleGuide: '#no-mutable-defaults'
-  Enabled: pending # todo
+  Enabled: true
   VersionAdded: '1.70'
 
 Lint/StructNewOverride:
@@ -2478,7 +2478,7 @@ Lint/UnderscorePrefixedVariableName:
 
 Lint/UnescapedBracketInRegexp:
   Description: 'Checks for unescaped literal `]` in Regexp.'
-  Enabled: true # todo
+  Enabled: true
   VersionAdded: '1.68'
 
 Lint/UnexpectedBlockArity:
@@ -3177,7 +3177,7 @@ Style/Alias:
 Style/AmbiguousEndlessMethodDefinition:
   Description: 'Checks for endless methods inside operators of lower precedence.'
   StyleGuide: '#ambiguous-endless-method-defintions'
-  Enabled: true # todo
+  Enabled: true
   VersionAdded: '1.68'
 
 Style/AndOr:
@@ -3290,7 +3290,7 @@ Style/BisectedAttrAccessor:
 Style/BitwisePredicate:
   Description: 'Prefer bitwise predicate methods over direct comparison operations.'
   StyleGuide: '#bitwise-predicate-methods'
-  Enabled: true # todo
+  Enabled: true
   Safe: false
   VersionAdded: '1.68'
 
@@ -3579,7 +3579,7 @@ Style/ColonMethodDefinition:
 
 Style/CombinableDefined:
   Description: 'Checks successive `defined?` calls that can be combined into a single call.'
-  Enabled: true #todo
+  Enabled: true
   VersionAdded: '1.68'
 
 Style/CombinableLoops:
@@ -4323,7 +4323,7 @@ Style/IpAddresses:
 
 Style/ItAssignment:
   Description: 'Checks for assignment to `it` inside a block.'
-  Enabled: true #todo
+  Enabled: true
   VersionAdded: '1.70'
 
 Style/KeywordArgumentsMerging:
@@ -4331,7 +4331,7 @@ Style/KeywordArgumentsMerging:
     When passing an existing hash as keyword arguments, provide additional arguments
     directly rather than using `merge`.
   StyleGuide: '#merging-keyword-arguments'
-  Enabled: true # todo
+  Enabled: true
   VersionAdded: '1.68'
 
 Style/KeywordParametersOrder:
@@ -4401,7 +4401,7 @@ Style/MapCompactWithConditionalBlock:
 Style/MapIntoArray:
   Description: 'Checks for usages of `each` with `<<`, `push`, or `append` which can be replaced by `map`.'
   StyleGuide: '#functional-code'
-  Enabled: true # todo
+  Enabled: true
   VersionAdded: '1.63'
   VersionChanged: '1.67'
   Safe: false
@@ -5322,7 +5322,7 @@ Style/SafeNavigation:
 Style/SafeNavigationChainLength:
   Description: 'Enforces safe navigation chains length to not exceed the configured maximum.'
   StyleGuide: '#safe-navigation'
-  Enabled: true # todo
+  Enabled: false
   VersionAdded: '1.68'
   Max: 2
 
@@ -5366,7 +5366,7 @@ Style/Send:
 
 Style/SendWithLiteralMethodName:
   Description: 'Detects the use of the `public_send` method with a static method name argument.'
-  Enabled: true # todo
+  Enabled: true
   Safe: false
   AllowSend: true
   VersionAdded: '1.64'
