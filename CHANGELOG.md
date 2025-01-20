@@ -5,9 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ## Unreleased
 
 ### Breaking changes
+- Upgrade to `rubocop` 1.70 (was 1.61)
 
 ### Compatible changes
-
+- Add Support for Ruby 3.4
 
 ## 14.0.1 - 2024-09-12
 
