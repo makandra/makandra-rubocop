@@ -5322,7 +5322,7 @@ Style/SafeNavigation:
 Style/SafeNavigationChainLength:
   Description: 'Enforces safe navigation chains length to not exceed the configured maximum.'
   StyleGuide: '#safe-navigation'
-  Enabled: false
+  Enabled: true # see https://github.com/makandra/makandra-rubocop/pull/53#discussion_r1914769359
   VersionAdded: '1.68'
   Max: 2
 
