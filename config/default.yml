@@ -3579,7 +3579,7 @@ Style/ColonMethodDefinition:
 
 Style/CombinableDefined:
   Description: 'Checks successive `defined?` calls that can be combined into a single call.'
-  Enabled: true
+  Enabled: false # See https://github.com/makandra/makandra-rubocop/pull/53#discussion_r1914759268
   VersionAdded: '1.68'
 
 Style/CombinableLoops:
