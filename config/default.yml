@@ -5317,7 +5317,7 @@ Style/SafeNavigation:
     - try!
   SafeAutoCorrect: false
   # Maximum length of method chains for register an offense.
-  MaxChainLength: 2
+  MaxChainLength: 1
 
 Style/SafeNavigationChainLength:
   Description: 'Enforces safe navigation chains length to not exceed the configured maximum.'

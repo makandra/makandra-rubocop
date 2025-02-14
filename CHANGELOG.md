@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 -
 
 ### Compatible changes
--
+- Style/SafeNavigation: set MaxChainLength to 1 (#55)
 
 ## 15.0.0 - 2025-01-20
 
@@ -19,9 +19,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Compatible changes
 - Add Support for Ruby 3.4
 
-## 14.0.1 - 2024-09-12
 
-### Breaking changes
+## 14.0.1 - 2024-09-12
 
 ### Compatible changes
 
@@ -41,8 +40,6 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 
 ## 13.0.0 - 2024-05-27
-
-### Compatible changes
 
 ### Breaking changes
 
