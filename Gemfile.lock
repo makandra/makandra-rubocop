@@ -7,6 +7,7 @@ PATH
       rubocop-factory_bot (~> 2.25.1)
       rubocop-rails (~> 2.23.1)
       rubocop-rspec (~> 3.0.3)
+      rubocop-rspec_rails (~> 2.30.0)
 
 GEM
   remote: https://rubygems.org/
@@ -70,6 +71,9 @@ GEM
       rubocop-ast (>= 1.30.0, < 2.0)
     rubocop-rspec (3.0.5)
       rubocop (~> 1.61)
+    rubocop-rspec_rails (2.30.0)
+      rubocop (~> 1.61)
+      rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     securerandom (0.3.2)
     tzinfo (2.0.6)
