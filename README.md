@@ -54,6 +54,18 @@ inherit_gem:
     - config/ext/rspec.yml
 ```
 
+**For RSpec Rails**
+
+Since `rubocop-rspec_rails` requires `rubocop-rspec`, the config for both gems should be loaded.
+
+```yaml
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+    - config/ext/rspec.yml
+    - config/ext/rspec_rails.yml
+```
+
 **For Capybara**
 
 ```yaml
