@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    makandra-rubocop (15.1.0)
+    makandra-rubocop (16.0.0)
       rubocop (~> 1.70.0)
       rubocop-capybara (~> 2.20.0)
       rubocop-factory_bot (~> 2.25.1)
@@ -91,4 +91,4 @@ DEPENDENCIES
   rake (~> 12.3)
 
 BUNDLED WITH
-   2.4.22
+   2.5.14

@@ -5,9 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ## Unreleased
 
 ### Breaking changes
-- Add `rubocop-rspec-rails`
 
 ### Compatible changes
+
+
+## 16.0.0 - 2025-02-25
+
+### Breaking changes
+- Add `rubocop-rspec_rails`
 
 
 ## 15.1.0 - 2025-02-14
