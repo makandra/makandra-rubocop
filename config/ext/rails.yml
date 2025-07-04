@@ -526,7 +526,7 @@ Rails/FreezeTime:
 Rails/HasAndBelongsToMany:
   Description: 'Prefer has_many :through to has_and_belongs_to_many.'
   StyleGuide: 'https://rails.rubystyle.guide#has-many-through'
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/61
   VersionAdded: '0.12'
   Include:
     - app/models/**/*.rb
@@ -1043,7 +1043,7 @@ Rails/SkipsModelValidations:
 Rails/SquishedSQLHeredocs:
   Description: 'Checks SQL heredocs to use `.squish`.'
   StyleGuide: 'https://rails.rubystyle.guide/#squished-heredocs'
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/65
   VersionAdded: '2.8'
   VersionChanged: '2.9'
   # Some SQL syntax (e.g. PostgreSQL comments and functions) requires newlines

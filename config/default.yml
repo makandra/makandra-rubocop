@@ -1375,7 +1375,7 @@ Layout/SpaceAroundMethodCallOperator:
 Layout/SpaceAroundOperators:
   Description: 'Use a single space around operators.'
   StyleGuide: '#spaces-operators'
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/66
   VersionAdded: '0.49'
   # When `true`, allows most uses of extra spacing if the intent is to align
   # with an operator on the previous or next line, not counting empty lines
@@ -2975,7 +2975,7 @@ Naming/MethodParameterName:
   Description: >-
     Checks for method parameter names that contain capital letters,
     end in numbers, or do not meet a minimal length.
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/72
   VersionAdded: '0.53'
   VersionChanged: '0.77'
   # Parameter names may be equal to or greater than this value
@@ -3197,7 +3197,7 @@ Style/AndOr:
 Style/ArgumentsForwarding:
   Description: 'Use arguments forwarding.'
   StyleGuide: '#arguments-forwarding'
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/69
   # AllowOnlyRestArgument: true # Option has been commented out since it produced warnings when running Rubocop on Ruby 3.3 applications. Not specifying it avoids warnings, and seems to be fine.
   UseAnonymousForwarding: false # Enforcing anonymous * or ** does not improve code readability.
   RedundantRestArgumentNames:
@@ -3220,7 +3220,7 @@ Style/ArrayCoercion:
     with a variable you want to treat as an Array, but you're not certain it's an array.
   StyleGuide: '#array-coercion'
   Safe: false
-  Enabled: true # We use this quite often exactly like described
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/70
   VersionAdded: '0.88'
 
 Style/ArrayFirstLast:
@@ -3586,7 +3586,7 @@ Style/CombinableLoops:
   Description: >-
     Checks for places where multiple consecutive loops over the same data
     can be combined into a single loop.
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/67
   Safe: false
   VersionAdded: '0.90'
 
@@ -3648,7 +3648,7 @@ Style/ConditionalAssignment:
     Use the return value of `if` and `case` statements for
     assignment to a variable and variable comparison instead
     of assigning that variable inside of each branch.
-  Enabled: true # We usually want this, except when assigning multiple values. Disable, if this cop contradicts that.
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/62
   VersionAdded: '0.36'
   VersionChanged: '0.47'
   EnforcedStyle: assign_to_condition
@@ -3829,7 +3829,7 @@ Style/EmptyElse:
     - empty
     - nil
     - both
-  AllowComments: false
+  AllowComments: true # as discussed in https://github.com/makandra/makandra-rubocop/issues/71
 
 Style/EmptyHeredoc:
   Description: 'Checks for using empty heredoc to reduce redundancy.'
@@ -4002,7 +4002,7 @@ Style/For:
 Style/FormatString:
   Description: 'Enforce the use of Kernel#sprintf, Kernel#format or String#%.'
   StyleGuide: '#sprintf'
-  Enabled: true
+  Enabled: false #  as discussed in https://github.com/makandra/makandra-rubocop/issues/58
   VersionAdded: '0.19'
   VersionChanged: '0.49'
   EnforcedStyle: format
@@ -5303,7 +5303,7 @@ Style/SafeNavigation:
     safe navigation (`&.`).
     Autocorrection is unsafe as it assumes the object will
     be `nil` or truthy, but never `false`.
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/63
   VersionAdded: '0.43'
   VersionChanged: '1.67'
   # Safe navigation may cause a statement to start returning `nil` in addition
@@ -5427,7 +5427,7 @@ Style/SoleNestedConditional:
   Description: >-
     Finds sole nested conditional nodes
     which can be merged into outer conditional node.
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/68
   VersionAdded: '0.89'
   VersionChanged: '1.5'
   AllowModifier: false
@@ -5496,7 +5496,7 @@ Style/StringHashKeys:
 Style/StringLiterals:
   Description: 'Checks if uses of quotes match the configured preference.'
   StyleGuide: '#consistent-string-literals'
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/64
   VersionAdded: '0.9'
   VersionChanged: '0.36'
   EnforcedStyle: single_quotes

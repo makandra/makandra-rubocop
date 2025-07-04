@@ -522,7 +522,7 @@ RSpec/ImplicitSubject:
 
 RSpec/IndexedLet:
   Description: Do not set up test data using indexes (e.g., `item_1`, `item_2`).
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/60
   VersionAdded: '2.20'
   VersionChanged: '2.23'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/IndexedLet
@@ -631,7 +631,7 @@ RSpec/MessageSpies:
 
 RSpec/MetadataStyle:
   Description: Use consistent metadata style.
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/59
   EnforcedStyle: symbol
   SupportedStyles:
     - hash
@@ -716,7 +716,7 @@ RSpec/NoExpectationExample:
 
 RSpec/NotToNot:
   Description: Checks for consistent method usage for negating expectations.
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/73
   EnforcedStyle: not_to
   SupportedStyles:
     - not_to

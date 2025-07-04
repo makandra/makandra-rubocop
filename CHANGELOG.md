@@ -7,6 +7,22 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Breaking changes
 
 ### Compatible changes
+- Disable cop RSpec/NotToNot (#73)
+- Disable cop Naming/MethodParameterName (#72)
+- Set option AllowComments for cop Style/EmptyElse to true (#71)
+- Disable cop Style/ArrayCoercion (#70)
+- Disable cop Style/ArgumentsForwarding (#69)
+- Disable cop Style/SoleNestedConditional (#68)
+- Disable cop Style/CombinableLoops (#67)
+- Disable cop Layout/SpaceAroundOperators (#66)
+- Disable cop Rails/SquishedSQLHeredocs (#65)
+- Disable cop Style/StringLiterals (#64)
+- Disable cop Style/SafeNavigation (#63)
+- Disable cop Style/ConditionalAssignment (#62)
+- Disable cop Rails/HasAndBelongsToMany (#61)
+- Disable cop RSpec/IndexedLet (#60)
+- Disable cop RSpec/MetadataStyle (#59)
+- Disable cop Style/FormatString (#58)
 
 
 ## 16.0.0 - 2025-02-25
