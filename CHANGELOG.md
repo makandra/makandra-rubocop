@@ -7,6 +7,11 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Breaking changes
 
 ### Compatible changes
+
+
+## 16.2.0 - 2025-07-22
+
+### Compatible changes
 - Disable RSpec/DescribedClass (#76)
 - Disable RSpec/MessageSpies (#75)
 
