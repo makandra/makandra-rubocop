@@ -273,7 +273,7 @@ RSpec/DescribeSymbol:
 
 RSpec/DescribedClass:
   Description: Checks that tests use `described_class`.
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/76
   SkipBlocks: false
   EnforcedStyle: described_class
   SupportedStyles:
@@ -621,7 +621,7 @@ RSpec/MessageExpectation:
 
 RSpec/MessageSpies:
   Description: Checks that message expectations are set using spies.
-  Enabled: true
+  Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/75
   EnforcedStyle: receive # We usually use receive as it is defined before the expectation line and not after
   SupportedStyles:
     - have_received
