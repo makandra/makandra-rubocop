@@ -8,6 +8,15 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+## 17.0.0 - 2026-02-10
+
+## Breaking changes
+- Upgrade rubocop from 1.70.0 to 1.84.1 (adds support for Ruby 4)
+- Upgrade rubocop-capybara from 2.20.0 to 2.22.1
+- Upgrade rubocop-factory_bot from 2.25.1 to 2.28.0
+- Upgrade rubocop-rails from 2.23.1 to 2.34.3
+- Upgrade rubocop-rspec from 3.0.3 to 3.9.0
+- Upgrade rubocop-rspec_rails from 2.30.0 to 2.32.0
 
 ## 16.2.0 - 2025-07-22
 
