@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-rspec_rails
 
 inherit_mode:
@@ -40,6 +40,12 @@ RSpecRails/HttpStatus:
   VersionAdded: '1.23'
   VersionChanged: '2.20'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/HttpStatus
+
+RSpecRails/HttpStatusNameConsistency:
+  Description: Enforces consistency by using the current HTTP status names.
+  Enabled: true
+  VersionAdded: '2.32'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/HttpStatusNameConsistency
 
 RSpecRails/InferredSpecType:
   Description: Identifies redundant spec type.
