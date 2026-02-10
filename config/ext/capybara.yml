@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-capybara
 
 inherit_mode:
@@ -15,11 +15,17 @@ Capybara:
     - "**/*_steps.rb"
     - "**/features/step_definitions/**/*"
 
+Capybara/AmbiguousClick:
+  Description: Specify the exact target to click on.
+  Enabled: false
+  VersionAdded: '2.22'
+  Reference: https://www.rubydoc.info/gems/rubocop-capybara/RuboCop/Cop/Capybara/AmbiguousClick
+
 Capybara/ClickLinkOrButtonStyle:
   Description: Checks for methods of button or link clicks.
   Enabled: false # https://github.com/makandra/makandra-rubocop/issues/49
   VersionAdded: '2.19'
-  VersionChanged: '2.20'
+  VersionChanged: '2.22'
   EnforcedStyle: link_or_button
   SupportedStyles:
     - link_or_button
@@ -32,6 +38,12 @@ Capybara/CurrentPathExpectation:
   VersionAdded: '1.18'
   VersionChanged: '2.0'
   Reference: https://www.rubydoc.info/gems/rubocop-capybara/RuboCop/Cop/Capybara/CurrentPathExpectation
+
+Capybara/FindAllFirst:
+  Description: Enforces use of `first` instead of `all` with `first` or `[0]`.
+  Enabled: pending
+  VersionAdded: '2.22'
+  Reference: https://www.rubydoc.info/gems/rubocop-capybara/RuboCop/Cop/Capybara/FindAllFirst
 
 Capybara/MatchStyle:
   Description: Checks for usage of deprecated style methods.
@@ -49,6 +61,12 @@ Capybara/NegationMatcher:
     - have_no
     - not_to
   Reference: https://www.rubydoc.info/gems/rubocop-capybara/RuboCop/Cop/Capybara/NegationMatcher
+
+Capybara/NegationMatcherAfterVisit:
+  Description: Do not allow negative matchers to be used immediately after `visit`.
+  Enabled: pending
+  VersionAdded: '2.22'
+  Reference: https://www.rubydoc.info/gems/rubocop-capybara/RuboCop/Cop/Capybara/NegationMatcherAfterVisit
 
 Capybara/RedundantWithinFind:
   Description: Checks for redundant `within find(...)` calls.
