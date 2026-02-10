@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-factory_bot
 
 inherit_mode:
@@ -55,6 +55,7 @@ FactoryBot/ConsistentParenthesesStyle:
 FactoryBot/CreateList:
   Description: Checks for create_list usage.
   Enabled: true
+  AutoCorrect: contextual
   Include:
     - "**/*_spec.rb"
     - "**/spec/**/*"
@@ -67,7 +68,7 @@ FactoryBot/CreateList:
   ExplicitOnly: false
   SafeAutoCorrect: false
   VersionAdded: '1.25'
-  VersionChanged: '2.24'
+  VersionChanged: '2.26'
   Reference: https://www.rubydoc.info/gems/rubocop-factory_bot/RuboCop/Cop/FactoryBot/CreateList
 
 FactoryBot/ExcessiveCreateList:
