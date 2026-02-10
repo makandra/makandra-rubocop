@@ -1,4 +1,5 @@
-require:
+# Common configuration.
+plugins:
   - rubocop-rails
 
 inherit_mode:
@@ -8,8 +9,10 @@ inherit_mode:
 AllCops:
   Exclude:
     - '.git/**/*'
-    - app/assets/**/*
+    - '**/app/assets/**/*'
     - bin/**/*
+    # Exclude db/schema.rb and db/[CONFIGURATION_NAMESPACE]_schema.rb by default.
+    # See: https://guides.rubyonrails.org/active_record_multiple_databases.html#setting-up-your-application
     - db/*schema.rb
     - node_modules/**/*
     - log/**/*
@@ -20,14 +23,18 @@ AllCops:
   # Enable checking Active Support extensions.
   # See: https://docs.rubocop.org/rubocop/configuration.html#enable-checking-active-support-extensions
   ActiveSupportExtensionsEnabled: true
-  # What version of Rails is the inspected code using?  If a value is specified
-  # for TargetRailsVersion then it is used.  Acceptable values are specified
-  # as a float (i.e. 5.1); the patch version of Rails should not be included.
-  # If TargetRailsVersion is not set, RuboCop will parse the Gemfile.lock or
+  # What version of Rails is the inspected code using? If a value is specified
+  # for `TargetRailsVersion` then it is used. Acceptable values are specified
+  # as a float (e.g., 7.2); the patch version of Rails should not be included.
+  # If `TargetRailsVersion` is not set, RuboCop will parse the Gemfile.lock or
   # gems.locked file to find the version of Rails that has been bound to the
-  # application.  If neither of those files exist, RuboCop will use Rails 5.0
+  # application. If neither of those files exist, RuboCop will use Rails 5.0
   # as the default.
   TargetRailsVersion: ~
+  # By specifying `MigratedSchemaVersion` option, migration files that have been migrated can be ignored.
+  # When `MigratedSchemaVersion: '20241231000000'` is set. Migration files lower than or equal to '20250101000000' will be ignored.
+  # For example, this is the timestamp in db/migrate/20250101000000_create_articles.rb.
+  MigratedSchemaVersion: '19700101000000' # NOTE: Used as a sentinel value for the UNIX epoch time.
 
 Lint/NumberConversion:
   # Add Rails' duration methods to the ignore list for `Lint/NumberConversion`
@@ -76,6 +83,26 @@ Lint/SafeNavigationChain:
     - try!
     - in?
 
+Lint/UselessAccessModifier:
+  # Add methods from `ActiveSupport::Concern` and `Module::Concerning`:
+  # https://api.rubyonrails.org/classes/ActiveSupport/Concern.html
+  # https://api.rubyonrails.org/classes/Module/Concerning
+  inherit_mode:
+    merge:
+      - ContextCreatingMethods
+  ContextCreatingMethods:
+    - class_methods
+    - included
+    - prepended
+    - concern
+    - concerning
+
+Lint/UselessMethodDefinition:
+  # Avoids conflict with `Rails/LexicallyScopedActionFilter` cop.
+  Exclude:
+    - '**/app/controllers/**/*.rb'
+    - '**/app/mailers/**/*.rb'
+
 Rails:
   Enabled: true
   DocumentationBaseURL: https://docs.rubocop.org/rubocop-rails
@@ -106,8 +133,8 @@ Rails/ActionFilter:
     - action
     - filter
   Include:
-    - app/controllers/**/*.rb
-    - app/mailers/**/*.rb
+    - '**/app/controllers/**/*.rb'
+    - '**/app/mailers/**/*.rb'
 
 Rails/ActionOrder:
   Description: 'Enforce consistent ordering of controller actions.'
@@ -122,7 +149,7 @@ Rails/ActionOrder:
     - update
     - destroy
   Include:
-    - app/controllers/**/*.rb
+    - '**/app/controllers/**/*.rb'
 
 Rails/ActiveRecordAliases:
   Description: >-
@@ -139,7 +166,7 @@ Rails/ActiveRecordCallbacksOrder:
   Enabled: true
   VersionAdded: '2.7'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/ActiveRecordOverride:
   Description: >-
@@ -150,7 +177,7 @@ Rails/ActiveRecordOverride:
   VersionAdded: '0.67'
   VersionChanged: '2.18'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/ActiveSupportAliases:
   Description: >-
@@ -168,6 +195,7 @@ Rails/ActiveSupportOnLoad:
     - 'https://guides.rubyonrails.org/engines.html#available-load-hooks'
   SafeAutoCorrect: false
   VersionAdded: '2.16'
+  VersionChanged: '2.24'
 
 Rails/AddColumnIndex:
   Description: >-
@@ -214,7 +242,9 @@ Rails/ApplicationRecord:
   Enabled: false # Because not all models are necessarily domain models (e.g. migration models for legacy databases)
   SafeAutoCorrect: false
   VersionAdded: '0.49'
-  VersionChanged: '2.5'
+  VersionChanged: '2.26'
+  Exclude:
+    - db/**/*.rb
 
 Rails/ArelStar:
   Description: 'Enforces `Arel.star` instead of `"*"` for expanded columns.'
@@ -234,7 +264,7 @@ Rails/AttributeDefaultBlockValue:
   Enabled: true
   VersionAdded: '2.9'
   Include:
-    - 'models/**/*'
+    - '**/models/**/*'
 
 Rails/BelongsTo:
   Description: >-
@@ -293,8 +323,8 @@ Rails/ContentTag:
   # https://puma.io/puma/Puma/DSL.html#tag-instance_method
   # No helpers are used in normal models and configs.
   Exclude:
-    - app/models/**/*.rb
-    - config/**/*.rb
+    - '**/app/models/**/*.rb'
+    - '**/config/**/*.rb'
 
 Rails/CreateTableWithTimestamps:
   Description: >-
@@ -350,11 +380,13 @@ Rails/Delegate:
   Description: 'Prefer delegate method for delegations.'
   Enabled: false
   VersionAdded: '0.21'
-  VersionChanged: '0.50'
+  VersionChanged: '2.30'
   # When set to true, using the target object as a prefix of the
   # method name without using the `delegate` method will be a
   # violation. When set to false, this case is legal.
   EnforceForPrefixed: true
+  Exclude:
+    - '**/app/controllers/**/*.rb'
 
 Rails/DelegateAllowBlank:
   Description: 'Do not use allow_blank as an option to delegate.'
@@ -383,7 +415,7 @@ Rails/DuplicateAssociation:
   VersionChanged: '2.18'
 
 Rails/DuplicateScope:
-  Description: 'Multiple scopes share this same where clause.'
+  Description: 'Multiple scopes share this same expression.'
   Enabled: true
   Severity: warning
   VersionAdded: '2.14'
@@ -424,14 +456,28 @@ Rails/EnumHash:
   Enabled: true
   VersionAdded: '2.3'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
+
+Rails/EnumSyntax:
+  Description: 'Use positional arguments over keyword arguments when defining enums.'
+  Enabled: false
+  Severity: warning
+  VersionAdded: '2.26'
+  Include:
+    - '**/app/models/**/*.rb'
+    - '**/lib/**/*.rb'
 
 Rails/EnumUniqueness:
   Description: 'Avoid duplicate integers in hash-syntax `enum` declaration.'
   Enabled: true
   VersionAdded: '0.46'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
+
+Rails/Env:
+  Description: 'Use Feature Flags or config instead of `Rails.env`.'
+  Enabled: false
+  VersionAdded: '2.34'
 
 Rails/EnvLocal:
   Description: 'Use `Rails.env.local?` instead of `Rails.env.development? || Rails.env.test?`.'
@@ -447,12 +493,13 @@ Rails/EnvironmentVariableAccess:
   Description: 'Do not access `ENV` directly after initialization.'
   Enabled: false
   VersionAdded: '2.10'
-  VersionChanged: '2.11'
+  VersionChanged: '2.24'
   Include:
-    - app/**/*.rb
-    - lib/**/*.rb
+    - '**/app/**/*.rb'
+    - '**/config/initializers/**/*.rb'
+    - '**/lib/**/*.rb'
   Exclude:
-    - lib/**/*.rake
+    - '**/lib/**/*.rake'
   AllowReads: false
   AllowWrites: false
 
@@ -464,11 +511,11 @@ Rails/Exit:
   Enabled: true
   VersionAdded: '0.41'
   Include:
-    - app/**/*.rb
-    - config/**/*.rb
-    - lib/**/*.rb
+    - '**/app/**/*.rb'
+    - '**/config/**/*.rb'
+    - '**/lib/**/*.rb'
   Exclude:
-    - lib/**/*.rake
+    - '**/lib/**/*.rake'
 
 Rails/ExpandedDateRange:
   Description: 'Checks for expanded date range.'
@@ -501,6 +548,13 @@ Rails/FindById:
   Enabled: true
   VersionAdded: '2.7'
 
+Rails/FindByOrAssignmentMemoization:
+  Description: 'Avoid memoizing `find_by` results with `||=`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#find-by-memoization'
+  Enabled: false # In some cases it might be intended by our code to have multiple consequent '||=' calls returning `nil` until one captures a result.
+  Safe: false
+  VersionAdded: '2.33'
+
 Rails/FindEach:
   Description: 'Prefer all.find_each over all.each.'
   StyleGuide: 'https://rails.rubystyle.guide#find-each'
@@ -529,7 +583,7 @@ Rails/HasAndBelongsToMany:
   Enabled: false # as discussed in https://github.com/makandra/makandra-rubocop/issues/61
   VersionAdded: '0.12'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/HasManyOrHasOneDependent:
   Description: 'Define the dependent option to the has_many and has_one associations.'
@@ -537,14 +591,14 @@ Rails/HasManyOrHasOneDependent:
   Enabled: false # https://github.com/makandra/makandra-rubocop/issues/13
   VersionAdded: '0.50'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/HelperInstanceVariable:
   Description: 'Do not use instance variables in helpers.'
   Enabled: false # https://github.com/makandra/makandra-rubocop/issues/12
   VersionAdded: '2.0'
   Include:
-    - app/helpers/**/*.rb
+    - '**/app/helpers/**/*.rb'
 
 Rails/HttpPositionalArguments:
   Description: 'Use keyword arguments instead of positional arguments in http method calls.'
@@ -564,6 +618,14 @@ Rails/HttpStatus:
     - numeric
     - symbolic
 
+Rails/HttpStatusNameConsistency:
+  Description: 'Enforces consistency by using the current HTTP status names.'
+  Enabled: false
+  Severity: warning
+  VersionAdded: '2.34'
+  Include:
+    - '**/app/controllers/**/*.rb'
+
 Rails/I18nLazyLookup:
   Description: 'Checks for places where I18n "lazy" lookup can be used.'
   StyleGuide: 'https://rails.rubystyle.guide/#lazy-lookup'
@@ -575,7 +637,7 @@ Rails/I18nLazyLookup:
     - lazy
     - explicit
   Include:
-    - 'app/controllers/**/*.rb'
+    - '**/app/controllers/**/*.rb'
 
 Rails/I18nLocaleAssignment:
   Description: 'Prefer the usage of `I18n.with_locale` instead of manually updating `I18n.locale` value.'
@@ -604,8 +666,8 @@ Rails/IgnoredSkipActionFilterOption:
   Enabled: true
   VersionAdded: '0.63'
   Include:
-    - app/controllers/**/*.rb
-    - app/mailers/**/*.rb
+    - '**/app/controllers/**/*.rb'
+    - '**/app/mailers/**/*.rb'
 
 Rails/IndexBy:
   Description: 'Prefer `index_by` over `each_with_object`, `to_h`, or `map`.'
@@ -616,8 +678,9 @@ Rails/IndexBy:
 Rails/IndexWith:
   Description: 'Prefer `index_with` over `each_with_object`, `to_h`, or `map`.'
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '2.5'
-  VersionChanged: '2.8'
+  VersionChanged: '2.33'
 
 Rails/Inquiry:
   Description: "Prefer Ruby's comparison operators over Active Support's `Array#inquiry` and `String#inquiry`."
@@ -634,7 +697,7 @@ Rails/InverseOf:
   VersionAdded: '0.52'
   IgnoreScopes: false
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/LexicallyScopedActionFilter:
   Description: "Checks that methods specified in the filter's `only` or `except` options are explicitly defined in the class."
@@ -643,8 +706,8 @@ Rails/LexicallyScopedActionFilter:
   Safe: false
   VersionAdded: '0.52'
   Include:
-    - app/controllers/**/*.rb
-    - app/mailers/**/*.rb
+    - '**/app/controllers/**/*.rb'
+    - '**/app/mailers/**/*.rb'
 
 Rails/LinkToBlank:
   Description: 'Checks that `link_to` with a `target: "_blank"` have a `rel: "noopener"` option passed to them.'
@@ -662,7 +725,7 @@ Rails/MailerName:
   SafeAutoCorrect: false
   VersionAdded: '2.7'
   Include:
-    - app/mailers/**/*.rb
+    - '**/app/mailers/**/*.rb'
 
 Rails/MatchRoute:
   Description: >-
@@ -672,8 +735,8 @@ Rails/MatchRoute:
   Enabled: false # No need why we want to have a cop for this
   VersionAdded: '2.7'
   Include:
-    - config/routes.rb
-    - config/routes/**/*.rb
+    - '**/config/routes.rb'
+    - '**/config/routes/**/*.rb'
 
 Rails/MigrationClassName:
   Description: 'The class name of the migration should match its file name.'
@@ -682,6 +745,15 @@ Rails/MigrationClassName:
   VersionChanged: '2.20'
   Include:
     - db/**/*.rb
+
+Rails/MultipleRoutePaths:
+  Description: 'Checks for mapping a route with multiple paths, which is deprecated and will be removed in Rails 8.1.'
+  Enabled: true
+  Severity: warning
+  VersionAdded: '2.29'
+  Include:
+    - '**/config/routes.rb'
+    - '**/config/routes/**/*.rb'
 
 Rails/NegateInclude:
   Description: 'Prefer `collection.exclude?(obj)` over `!collection.include?(obj)`.'
@@ -692,7 +764,7 @@ Rails/NegateInclude:
   VersionChanged: '2.9'
 
 Rails/NotNullColumn:
-  Description: 'Do not add a NOT NULL column without a default value.'
+  Description: 'Do not add a NOT NULL column without a default value to existing tables.'
   Enabled: true
   VersionAdded: '0.43'
   VersionChanged: '2.20'
@@ -701,6 +773,13 @@ Rails/NotNullColumn:
     - mysql
   Include:
     - db/**/*.rb
+
+Rails/OrderArguments:
+  Description: 'Prefer symbol arguments over strings in `order` method.'
+  StyleGuide: 'https://rails.rubystyle.guide/#order-arguments'
+  Enabled: false # We use both styles
+  VersionAdded: '2.33'
+  Safe: false
 
 Rails/OrderById:
   Description: >-
@@ -717,10 +796,10 @@ Rails/Output:
   VersionAdded: '0.15'
   VersionChanged: '0.19'
   Include:
-    - app/**/*.rb
-    - config/**/*.rb
+    - '**/app/**/*.rb'
+    - '**/config/**/*.rb'
     - db/**/*.rb
-    - lib/**/*.rb
+    - '**/lib/**/*.rb'
 
 Rails/OutputSafety:
   Description: 'The use of `html_safe` or `raw` may be a security risk.'
@@ -769,6 +848,7 @@ Rails/Presence:
   Description: 'Checks code that can be written more easily using `Object#presence` defined by Active Support.'
   Enabled: true
   VersionAdded: '0.52'
+  VersionChanged: '2.34'
 
 Rails/Present:
   Description: 'Enforces use of `present?`.'
@@ -792,7 +872,7 @@ Rails/RakeEnvironment:
     - '**/Rakefile'
     - '**/*.rake'
   Exclude:
-    - 'lib/capistrano/tasks/**/*.rake'
+    - '**/lib/capistrano/tasks/**/*.rake'
 
 Rails/ReadWriteAttribute:
   Description: >-
@@ -803,7 +883,15 @@ Rails/ReadWriteAttribute:
   VersionAdded: '0.20'
   VersionChanged: '0.29'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
+
+Rails/RedirectBackOrTo:
+  Description: >-
+                  Use `redirect_back_or_to` instead of `redirect_back` with
+                  `fallback_location` option.
+  Enabled: true
+  Severity: warning
+  VersionAdded: '2.34'
 
 Rails/RedundantActiveRecordAllMethod:
   Description: Detect redundant `all` used as a receiver for Active Record query methods.
@@ -822,7 +910,7 @@ Rails/RedundantAllowNil:
   Enabled: true
   VersionAdded: '0.67'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/RedundantForeignKey:
   Description: 'Checks for associations where the `:foreign_key` option is redundant.'
@@ -948,16 +1036,6 @@ Rails/RootPublicPath:
   Enabled: false
   VersionAdded: '2.15'
 
-Rails/SafeNavigation:
-  Description: "Use Ruby's safe navigation operator (`&.`) instead of `try!`."
-  Enabled: false
-  VersionAdded: '0.43'
-  # This will convert usages of `try` to use safe navigation as well as `try!`.
-  # `try` and `try!` work slightly differently. `try!` and safe navigation will
-  # both raise a `NoMethodError` if the receiver of the method call does not
-  # implement the intended method. `try` will not raise an exception for this.
-  ConvertTry: false
-
 Rails/SafeNavigationWithBlank:
   Description: 'Avoid `foo&.blank?` in conditionals.'
   Enabled: true
@@ -993,7 +1071,7 @@ Rails/ScopeArgs:
   VersionAdded: '0.19'
   VersionChanged: '2.12'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/SelectMap:
   Description: 'Checks for uses of `select(:column_name)` with `map(&:column_name)`.'
@@ -1017,8 +1095,9 @@ Rails/SkipsModelValidations:
     See reference for more information.
   Reference: 'https://guides.rubyonrails.org/active_record_validations.html#skipping-validations'
   Enabled: false
+  Safe: false
   VersionAdded: '0.47'
-  VersionChanged: '2.7'
+  VersionChanged: '2.25'
   ForbiddenMethods:
     - decrement!
     - decrement_counter
@@ -1056,6 +1135,15 @@ Rails/StripHeredoc:
   Enabled: true
   VersionAdded: '2.15'
 
+Rails/StrongParametersExpect:
+  Description: 'Enforces the use of `ActionController::Parameters#expect` as a method for strong parameter handling.'
+  Reference: 'https://api.rubyonrails.org/classes/ActionController/Parameters.html#method-i-expect'
+  Enabled: true
+  Include:
+    - '**/app/controllers/**/*.rb'
+  SafeAutoCorrect: false
+  VersionAdded: '2.29'
+
 Rails/TableNameAssignment:
   Description: >-
     Do not use `self.table_name =`. Use Inflections or `table_name_prefix` instead.
@@ -1063,7 +1151,7 @@ Rails/TableNameAssignment:
   Enabled: false
   VersionAdded: '2.14'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/ThreeStateBooleanColumn:
   Description: 'Add a default value and a `NOT NULL` constraint to boolean columns.'
@@ -1076,7 +1164,7 @@ Rails/ThreeStateBooleanColumn:
 Rails/TimeZone:
   Description: 'Checks the correct usage of time zone aware methods.'
   StyleGuide: 'https://rails.rubystyle.guide#time'
-  Reference: 'http://danilenko.org/2012/7/6/rails_timezones'
+  Reference: 'https://danilenko.org/2012/7/6/rails_timezones'
   Enabled: false
   SafeAutoCorrect: false
   VersionAdded: '0.30'
@@ -1147,7 +1235,7 @@ Rails/UniqueValidationWithoutIndex:
   Enabled: true
   VersionAdded: '2.5'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/UnknownEnv:
   Description: 'Use correct environment name.'
@@ -1164,8 +1252,9 @@ Rails/UnusedIgnoredColumns:
   Description: 'Remove a column that does not exist from `ignored_columns`.'
   Enabled: true
   VersionAdded: '2.11'
+  VersionChanged: '2.25'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/UnusedRenderContent:
   Description: 'Do not specify body content for a response with a non-content status code.'
@@ -1179,14 +1268,14 @@ Rails/Validation:
   VersionAdded: '0.9'
   VersionChanged: '0.41'
   Include:
-    - app/models/**/*.rb
+    - '**/app/models/**/*.rb'
 
 Rails/WhereEquals:
-  Description: 'Pass conditions to `where` as a hash instead of manually constructing SQL.'
+  Description: 'Pass conditions to `where` and `where.not` as a hash instead of manually constructing SQL.'
   StyleGuide: 'https://rails.rubystyle.guide/#hash-conditions'
   Enabled: true
   VersionAdded: '2.9'
-  VersionChanged: '2.10'
+  VersionChanged: '2.26'
 
 Rails/WhereExists:
   Description: 'Prefer `exists?(...)` over `where(...).exists?`.'
@@ -1218,9 +1307,20 @@ Rails/WhereNotWithMultipleConditions:
   VersionAdded: '2.17'
   VersionChanged: '2.18'
 
+Rails/WhereRange:
+  Description: 'Use ranges in `where` instead of manually constructing SQL.'
+  StyleGuide: 'https://rails.rubystyle.guide/#where-ranges'
+  Enabled: false # We still want to support both variants
+  SafeAutoCorrect: false
+  VersionAdded: '2.25'
+
 # Accept `redirect_to(...) and return` and similar cases.
 Style/AndOr:
   EnforcedStyle: conditionals
+
+Style/CollectionCompact:
+  AllowedReceivers:
+    - params
 
 Style/FormatStringToken:
   AllowedMethods:
