@@ -8,6 +8,21 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+## 18.0.0 - 2026-10-19
+
+### Breaking changes
+- Upgrade rubocop from 1.84.1 to 1.92.0
+- Upgrade rubocop-capybara from 2.22.1 to 3.1.0
+  - `Capybara/ClickLinkOrButtonStyle` was removed upstream
+  - Matcher cops moved into the `Capybara/RSpec` department, which is now enabled. This also enables `Capybara/RSpec/HaveSelector` and `Capybara/RSpec/PredicateMatcher`, which upstream enabled in 3.0.
+- Upgrade rubocop-rails from 2.34.3 to 2.38.0
+- Upgrade rubocop-rspec from 3.9.0 to 3.10.2
+- Upgrade rubocop-rspec_rails from 2.32.0 to 2.33.0
+
+### Compatible changes
+- Add `rubocop-minitest` 0.41.0 with `config/ext/minitest.yml`
+- Set `NewCops: disable`, so new (`pending`) cops stay disabled until we explicitly enable them. All cops that were `pending` before this release are now `Enabled: true` and keep running as before. The `pending` cops added by the upgrades above are disabled.
+
 ## 17.0.0 - 2026-02-10
 
 ## Breaking changes
