@@ -268,8 +268,8 @@ Rails/AttributeDefaultBlockValue:
 
 Rails/BelongsTo:
   Description: >-
-                  Use `optional: true` instead of `required: false` for
-                  `belongs_to` relations.
+    Use `optional: true` instead of `required: false` for
+    `belongs_to` relations.
   Reference:
     - https://guides.rubyonrails.org/5_0_release_notes.html
     - https://github.com/rails/rails/pull/18937
@@ -311,7 +311,7 @@ Rails/CompactBlank:
   VersionAdded: '2.13'
 
 Rails/ContentTag:
-  Description: 'Use `tag` instead of `content_tag`.'
+  Description: 'Use `tag.something` instead of `tag(:something)`.'
   Reference:
     - 'https://github.com/rubocop/rubocop-rails/issues/260'
     - 'https://github.com/rails/rails/issues/25195'
@@ -344,7 +344,7 @@ Rails/CreateTableWithTimestamps:
 
 Rails/DangerousColumnNames:
   Description: >-
-                  Avoid dangerous column names.
+    Avoid dangerous column names.
   Enabled: true
   Severity: warning
   VersionAdded: '2.21'
@@ -353,8 +353,8 @@ Rails/DangerousColumnNames:
 
 Rails/Date:
   Description: >-
-                  Checks the correct usage of date aware methods,
-                  such as Date.today, Date.current etc.
+    Checks the correct usage of date aware methods,
+    such as Date.today, Date.current etc.
   Enabled: false # It's not that simple. Really.
   SafeAutoCorrect: false
   VersionAdded: '0.30'
@@ -431,6 +431,7 @@ Rails/DynamicFindBy:
   Description: 'Use `find_by` instead of dynamic `find_by_*`.'
   StyleGuide: 'https://rails.rubystyle.guide#find_by'
   Enabled: false # We occasionally define custom find_by_* methods (e.g. `find_by_anything`) which don't work like ActiveRecord's methods.
+  Safe: false
   VersionAdded: '0.44'
   VersionChanged: '2.10'
   # The `Whitelist` has been deprecated, Please use `AllowedMethods` instead.
@@ -491,6 +492,7 @@ Rails/EnvironmentComparison:
 
 Rails/EnvironmentVariableAccess:
   Description: 'Do not access `ENV` directly after initialization.'
+  # TODO: Set to `pending` status in RuboCop Rails 2 series when migration doc will be written.
   Enabled: false
   VersionAdded: '2.10'
   VersionChanged: '2.24'
@@ -519,6 +521,7 @@ Rails/Exit:
 
 Rails/ExpandedDateRange:
   Description: 'Checks for expanded date range.'
+  StyleGuide: 'https://rails.rubystyle.guide/#date-time-range'
   Enabled: false # We think the range syntax is clearer than using #all_year for example
   VersionAdded: '2.11'
 
@@ -887,8 +890,8 @@ Rails/ReadWriteAttribute:
 
 Rails/RedirectBackOrTo:
   Description: >-
-                  Use `redirect_back_or_to` instead of `redirect_back` with
-                  `fallback_location` option.
+    Use `redirect_back_or_to` instead of `redirect_back` with
+    `fallback_location` option.
   Enabled: true
   Severity: warning
   VersionAdded: '2.34'
@@ -1035,6 +1038,16 @@ Rails/RootPublicPath:
   Description: "Favor `Rails.public_path` over `Rails.root` with `'public'`."
   Enabled: false
   VersionAdded: '2.15'
+
+Rails/SafeNavigation:
+  Description: "Use Ruby's safe navigation operator (`&.`) instead of `try!`."
+  Enabled: true
+  VersionAdded: '0.43'
+  # This will convert usages of `try` to use safe navigation as well as `try!`.
+  # `try` and `try!` work slightly differently. `try!` and safe navigation will
+  # both raise a `NoMethodError` if the receiver of the method call does not
+  # implement the intended method. `try` will not raise an exception for this.
+  ConvertTry: false
 
 Rails/SafeNavigationWithBlank:
   Description: 'Avoid `foo&.blank?` in conditionals.'
@@ -1223,7 +1236,7 @@ Rails/UniqBeforePluck:
   Description: 'Prefer the use of uniq or distinct before pluck.'
   Enabled: true
   VersionAdded: '0.40'
-  VersionChanged: '2.8'
+  VersionChanged: '2.13'
   EnforcedStyle: conservative
   SupportedStyles:
     - conservative
@@ -1231,7 +1244,7 @@ Rails/UniqBeforePluck:
   SafeAutoCorrect: false
 
 Rails/UniqueValidationWithoutIndex:
-  Description: 'Uniqueness validation should be with a unique index.'
+  Description: 'Uniqueness validation should have a unique index on the database column.'
   Enabled: true
   VersionAdded: '2.5'
   Include:
@@ -1274,12 +1287,14 @@ Rails/WhereEquals:
   Description: 'Pass conditions to `where` and `where.not` as a hash instead of manually constructing SQL.'
   StyleGuide: 'https://rails.rubystyle.guide/#hash-conditions'
   Enabled: true
+  SafeAutoCorrect: false
   VersionAdded: '2.9'
   VersionChanged: '2.26'
 
 Rails/WhereExists:
   Description: 'Prefer `exists?(...)` over `where(...).exists?`.'
   Enabled: true
+  SafeAutoCorrect: false
   EnforcedStyle: exists
   SupportedStyles:
     - exists

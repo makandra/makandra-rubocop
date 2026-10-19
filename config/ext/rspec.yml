@@ -154,6 +154,7 @@ RSpec/Be:
 RSpec/BeEmpty:
   Description: Prefer using `be_empty` when checking for an empty array.
   Enabled: true
+  AutoCorrect: contextual
   VersionAdded: '2.20'
   VersionChanged: '2.31'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/BeEmpty
@@ -326,6 +327,7 @@ RSpec/DuplicatedMetadata:
 RSpec/EmptyExampleGroup:
   Description: Checks if an example group does not include any tests.
   Enabled: true
+  AutoCorrect: contextual
   SafeAutoCorrect: false
   VersionAdded: '1.7'
   VersionChanged: '2.31'
@@ -334,6 +336,7 @@ RSpec/EmptyExampleGroup:
 RSpec/EmptyHook:
   Description: Checks for empty before and after hooks.
   Enabled: true
+  AutoCorrect: contextual
   VersionAdded: '1.39'
   VersionChanged: '2.31'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/EmptyHook
@@ -379,6 +382,7 @@ RSpec/EmptyLineAfterSubject:
 RSpec/EmptyMetadata:
   Description: Avoid empty metadata hash.
   Enabled: true
+  AutoCorrect: contextual
   VersionAdded: '2.24'
   VersionChanged: '2.31'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/EmptyMetadata
@@ -481,6 +485,7 @@ RSpec/ExpectOutput:
 RSpec/Focus:
   Description: Checks if examples are focused.
   Enabled: true
+  AutoCorrect: contextual
   VersionAdded: '1.5'
   VersionChanged: '2.31'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Focus
@@ -500,6 +505,7 @@ RSpec/HookArgument:
 RSpec/HooksBeforeExamples:
   Description: Checks for before/around/after hooks that come after an example.
   Enabled: true
+  AutoCorrect: contextual
   VersionAdded: '1.29'
   VersionChanged: '2.31'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/HooksBeforeExamples
@@ -621,6 +627,7 @@ RSpec/LeakyLocalVariable:
 RSpec/LetBeforeExamples:
   Description: Checks for `let` definitions that come after an example.
   Enabled: true
+  AutoCorrect: contextual
   VersionAdded: '1.16'
   VersionChanged: '2.31'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/LetBeforeExamples
@@ -893,6 +900,7 @@ RSpec/ReturnFromStub:
 RSpec/ScatteredLet:
   Description: Checks for let scattered across the example group.
   Enabled: true
+  AutoCorrect: contextual
   VersionAdded: '1.14'
   VersionChanged: '2.31'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ScatteredLet
@@ -900,6 +908,7 @@ RSpec/ScatteredLet:
 RSpec/ScatteredSetup:
   Description: Checks for setup scattered across multiple hooks in an example group.
   Enabled: true
+  AutoCorrect: contextual
   VersionAdded: '1.10'
   VersionChanged: '2.31'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ScatteredSetup
