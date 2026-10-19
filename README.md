@@ -84,6 +84,15 @@ inherit_gem:
     - config/ext/factory_bot.yml
 ```
 
+**For Minitest**
+
+```yaml
+inherit_gem:
+  makandra-rubocop:
+    - config/default.yml
+    - config/ext/minitest.yml
+```
+
 Any per-project rules can then be defined in the `.rubocop.yml`:
 
 ```yaml
@@ -167,8 +176,8 @@ For release run `bundle exec rake release`, which will create a git tag for the
 version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ### Upgrading Rubocop dependencies
-The following procedure works for either `rubocop`, `rubocop-rails` or
-`rubocopo-rspec`. (Replace `rubocop` with the respective dependency name.)
+The following procedure works for `rubocop` and each of its plugins (`rubocop-rails`,
+`rubocop-rspec`, `rubocop-minitest`, ...). (Replace `rubocop` with the respective dependency name.)
 
 1. Change the `rubocop` dependency in the Gemspec to the version you want to
    upgrade to.
@@ -184,9 +193,9 @@ you have not added the Rubocop remote yet (check with `git remote -v`), do a
    Gemspec. The easiest way is to look them up on their [releases page](https://github.com/rubocop/rubocop/releases).
 3. Diff their config/default.yml between the previously used and the new Rubocop
    version, and write it to a file: `git diff $OLDER_SHA $NEWER_SHA config/default.yml > config_diff`
-4. If you are updating `rubocop-rails` or `rubocop-rspec`, edit the config_diff
-   file now and replace `config/default.yml` with `config/ext/{rails,rspec}.yml`
-   (respectively).
+4. If you are updating a plugin like `rubocop-rails` or `rubocop-rspec`, edit the config_diff
+   file now and replace `config/default.yml` with the plugin's file in `config/ext/`
+   (e.g. `config/ext/rails.yml`).
 5. Apply the diff with `git apply ./config_diff --3way`
 6. Resolve merge conflicts carefully and review all changes. We do not want to
    loose changes in [our config files](https://github.com/makandra/makandra-rubocop/tree/master/config).

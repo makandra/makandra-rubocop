@@ -17,7 +17,7 @@ FactoryBot:
 
 FactoryBot/AssociationStyle:
   Description: Use a consistent style to define associations.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '2.23'
   VersionChanged: '2.24'
@@ -37,7 +37,7 @@ FactoryBot/AttributeDefinedStatically:
 
 FactoryBot/ConsistentParenthesesStyle:
   Description: Use a consistent style for parentheses in factory_bot calls.
-  Enabled: pending
+  Enabled: true
   Include:
     - "**/*_spec.rb"
     - "**/spec/**/*"
@@ -73,7 +73,7 @@ FactoryBot/CreateList:
 
 FactoryBot/ExcessiveCreateList:
   Description: Check for excessive model creation in a list.
-  Enabled: pending
+  Enabled: true
   Include:
     - "**/*_spec.rb"
     - "**/spec/**/*"
@@ -85,7 +85,7 @@ FactoryBot/ExcessiveCreateList:
 
 FactoryBot/FactoryAssociationWithStrategy:
   Description: Use definition in factory association instead of hard coding a strategy.
-  Enabled: pending
+  Enabled: true
   Include:
     - "**/*_spec.rb"
     - "**/spec/**/*"
@@ -104,7 +104,7 @@ FactoryBot/FactoryClassName:
 
 FactoryBot/FactoryNameStyle:
   Description: Checks for name style for argument of FactoryBot::Syntax::Methods.
-  Enabled: pending
+  Enabled: true
   Include:
     - "**/*_spec.rb"
     - "**/spec/**/*"
@@ -121,13 +121,13 @@ FactoryBot/FactoryNameStyle:
 
 FactoryBot/IdSequence:
   Description: Do not create a FactoryBot sequence for an id column.
-  Enabled: pending
+  Enabled: true
   VersionAdded: '2.24'
   Reference: https://www.rubydoc.info/gems/rubocop-factory_bot/RuboCop/Cop/FactoryBot/IdSequence
 
 FactoryBot/RedundantFactoryOption:
   Description: Checks for redundant `factory` option.
-  Enabled: pending
+  Enabled: true
   Include:
     - "**/*_spec.rb"
     - "**/spec/**/*"
@@ -138,7 +138,7 @@ FactoryBot/RedundantFactoryOption:
 
 FactoryBot/SyntaxMethods:
   Description: Use shorthands from `FactoryBot::Syntax::Methods` in your specs.
-  Enabled: pending
+  Enabled: true
   Include:
     - "**/*_spec.rb"
     - "**/spec/**/*"

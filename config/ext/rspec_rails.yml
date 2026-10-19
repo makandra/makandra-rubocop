@@ -13,14 +13,21 @@ RSpecRails:
     - "**/spec/**/*"
 
 RSpecRails/AvoidSetupHook:
-  Description: Checks that tests use RSpec `before` hook over Rails `setup` method.
-  Enabled: pending
+  Description: Checks that tests use RSpec `before` instead of Rails `setup`.
+  Enabled: true
   VersionAdded: '2.4'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/AvoidSetupHook
 
+RSpecRails/FileFixture:
+  Description: Prefer `file_fixture` over hardcoded paths into `spec/fixtures`.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '2.33'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/FileFixture
+
 RSpecRails/HaveHttpStatus:
   Description: Checks that tests use `have_http_status` instead of equality matchers.
-  Enabled: pending
+  Enabled: true
   ResponseMethods:
     - response
     - last_response
@@ -49,7 +56,7 @@ RSpecRails/HttpStatusNameConsistency:
 
 RSpecRails/InferredSpecType:
   Description: Identifies redundant spec type.
-  Enabled: pending
+  Enabled: true
   Safe: false
   VersionAdded: '2.14'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/InferredSpecType
@@ -71,8 +78,8 @@ RSpecRails/InferredSpecType:
     views: view
 
 RSpecRails/MinitestAssertions:
-  Description: Check if using Minitest-like matchers.
-  Enabled: pending
+  Description: Detects Minitest-like matchers.
+  Enabled: true
   VersionAdded: '2.17'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/MinitestAssertions
 
@@ -84,13 +91,19 @@ RSpecRails/NegationBeValid:
   SupportedStyles:
     - not_to
     - be_invalid
-  Enabled: pending
+  Enabled: true
   VersionAdded: '2.23'
   VersionChanged: '2.29'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/NegationBeValid
 
+RSpecRails/ReceivePerformLater:
+  Description: Prefer `have_enqueued_job` over `receive(:perform_later)`.
+  Enabled: pending
+  VersionAdded: '2.33'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/ReceivePerformLater
+
 RSpecRails/TravelAround:
-  Description: Prefer to travel in `before` rather than `around`.
+  Description: Checks for time travel helpers in `around` hooks.
   Enabled: false
   Safe: false
   VersionAdded: '2.19'

@@ -310,6 +310,13 @@ RSpec/Dialect:
   VersionAdded: '1.33'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Dialect
 
+RSpec/DiscardedMatcher:
+  Description: Checks for matchers that are used in void context.
+  Enabled: pending
+  VersionAdded: '3.10'
+  CustomMatcherMethods: []
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DiscardedMatcher
+
 RSpec/DuplicatedMetadata:
   Description: Avoid duplicated metadata.
   Enabled: true
@@ -449,7 +456,8 @@ RSpec/ExpectChange:
     - block
   SafeAutoCorrect: false
   VersionAdded: '1.22'
-  VersionChanged: '2.5'
+  VersionChanged: '3.10'
+  NegatedMatcher: ~
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExpectChange
 
 RSpec/ExpectInHook:
@@ -628,6 +636,13 @@ RSpec/MatchArray:
   Enabled: true
   VersionAdded: '2.19'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MatchArray
+
+RSpec/MatchWithSimpleRegex:
+  Description: Enforces the use of `include` matcher instead of `match` when the matcher
+    is a simple string literal without regex-specific features.
+  Enabled: pending
+  VersionAdded: '3.10'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MatchWithSimpleRegex
 
 RSpec/MessageChain:
   Description: Check that chains of messages are not being stubbed.
@@ -892,7 +907,9 @@ RSpec/ScatteredSetup:
 RSpec/SharedContext:
   Description: Checks for proper shared_context and shared_examples usage.
   Enabled: true
+  Strict: false
   VersionAdded: '1.13'
+  VersionChanged: '3.10'
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/SharedContext
 
 RSpec/SharedExamples:
